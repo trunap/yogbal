@@ -3,83 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Plan & Itinerary: Jogja - Bali</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Roadtrip Seru: Jogja - Bali</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0f172a;
-            --secondary: #3b82f6;
-            --accent: #e2e8f0;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --bg-color: #f8fafc;
+            --bg-color: #f0fdf4; 
             --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
             --danger: #ef4444;
-            --success: #10b981;
+            --warning: #f59e0b;
+            
+            /* Warna Tema Utama (Hijau) */
+            --theme-main: #059669; 
+            --theme-main-light: #34d399;
+
+            /* Warna Khusus Per Tab */
+            --color-persiapan: #8b5cf6;
+            --color-persiapan-light: #ddd6fe;
+            --color-berangkat: #3b82f6; 
+            --color-berangkat-light: #bfdbfe;
+            --color-kegiatan: #10b981;  
+            --color-kegiatan-light: #a7f3d0;
+            --color-pulang: #f59e0b;    
+            --color-pulang-light: #fde68a;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-main);
+            color: var(--text-dark);
             line-height: 1.6;
         }
 
+        /* Header dengan Aksen Hijau */
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--theme-main), #10b981);
             color: white;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem 4rem;
             text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.15);
         }
 
         header h1 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
         }
 
         header p {
-            color: #cbd5e1;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
 
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
+            max-width: 800px;
+            margin: -2.5rem auto 2rem;
             padding: 0 1rem;
+            position: relative;
         }
 
-        .section-title {
-            font-size: 1.4rem;
-            color: var(--primary);
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5rem;
-            margin: 2.5rem 0 1.5rem;
+        /* Info Utama */
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .info-panel {
-            background-color: #eff6ff;
-            border-left: 4px solid var(--secondary);
-            padding: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-around;
+            text-align: center;
             margin-bottom: 2rem;
-            border-radius: 0 8px 8px 0;
+            border-top: 5px solid var(--theme-main);
         }
 
-        .info-panel strong {
-            color: var(--primary);
+        .info-item { flex: 1 1 100px; }
+        .info-icon { font-size: 1.8rem; display: block; margin-bottom: 0.3rem; }
+        .info-value { font-weight: 700; color: var(--text-dark); font-size: 0.95rem; }
+
+        /* Tabs Navigasi */
+        .tabs {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
+        .tab-btn {
+            background: #ffffff;
+            color: var(--text-light);
+            border: 2px solid transparent;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Warna Aktif Masing-masing Tab */
+        .tab-btn.tab-persiapan.active { background: var(--color-persiapan); color: white; box-shadow: 0 6px 12px rgba(139, 92, 246, 0.25); }
+        .tab-btn.tab-berangkat.active { background: var(--color-berangkat); color: white; box-shadow: 0 6px 12px rgba(59, 130, 246, 0.25); }
+        .tab-btn.tab-kegiatan.active { background: var(--color-kegiatan); color: white; box-shadow: 0 6px 12px rgba(16, 185, 129, 0.25); }
+        .tab-btn.tab-pulang.active { background: var(--color-pulang); color: white; box-shadow: 0 6px 12px rgba(245, 158, 11, 0.25); }
+
+        /* Konten Tab */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Styling Kartu Persiapan */
+        .checklist-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.8rem;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid var(--color-persiapan);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+        
+        .checklist-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        }
+
+        .checklist-card h3 {
+            color: #6d28d9;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 2px dashed #f1f5f9;
+            padding-bottom: 0.8rem;
+        }
+
+        .checklist-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist-card li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .checklist-card li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1rem;
+        }
+
+        /* Garis Waktu (Timeline) */
         .timeline {
             position: relative;
-            padding-left: 2rem;
+            padding-left: 1.5rem;
         }
 
         .timeline::before {
@@ -88,293 +196,587 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background-color: var(--accent);
+            width: 4px;
+            border-radius: 4px;
         }
 
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--accent);
-            border-radius: 8px;
+        /* Tema Berangkat (Biru) */
+        #berangkat .timeline::before { background: var(--color-berangkat-light); }
+        #berangkat .etape-card { border-left: 5px solid var(--color-berangkat); }
+        #berangkat .etape-card::before { background: var(--color-berangkat); border: 4px solid var(--card-bg); }
+        #berangkat .etape-title { color: #1e40af; }
+
+        /* Tema Pulang (Oranye) */
+        #pulang .timeline::before { background: var(--color-pulang-light); }
+        #pulang .etape-card { border-left: 5px solid var(--color-pulang); }
+        #pulang .etape-card::before { background: var(--color-pulang); border: 4px solid var(--card-bg); }
+        #pulang .etape-title { color: #92400e; }
+
+        .etape-card {
+            background: var(--card-bg);
+            border-radius: 16px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             position: relative;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        .etape-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
         }
 
-        .card::before {
+        .etape-card::before {
             content: '';
             position: absolute;
-            left: -2.4rem;
+            left: -1.95rem;
             top: 1.5rem;
-            width: 14px;
-            height: 14px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background-color: var(--secondary);
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--secondary);
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
         }
 
         .etape-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            border-bottom: 2px dashed #f1f5f9;
+            padding-bottom: 1rem;
             margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
         }
 
         .etape-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
+            margin-bottom: 0.8rem;
         }
 
-        .badges {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        .badge-time { background-color: #f1f5f9; color: var(--text-muted); }
-        .badge-distance { background-color: #e0f2fe; color: #0284c7; }
-        .badge-gas { background-color: #fef2f2; color: var(--danger); }
+        .badges { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+        .badge { font-size: 0.8rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 20px; }
         
-        .details-list {
-            list-style: none;
-            margin-top: 1rem;
-        }
+        .badge-dist { background: #e0e7ff; color: #4338ca; } 
+        .badge-time { background: #ffedd5; color: #c2410c; } 
+        .badge-gas { background: #fee2e2; color: var(--danger); }
 
-        .details-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .details-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
-            font-weight: bold;
-        }
-
-        .highlight {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .financial-note {
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            padding: 1.5rem;
+        .details p { margin-bottom: 0.5rem; font-size: 0.95rem; color: #334155; }
+        .highlight { font-weight: 600; color: var(--text-dark); }
+        .highlight-ferizy { font-weight: 700; color: var(--danger); background: #fee2e2; padding: 0 4px; border-radius: 4px;}
+        
+        /* Box Rincian Biaya per Etape */
+        .etape-cost {
+            background: #f8fafc;
             border-radius: 8px;
-            margin-top: 3rem;
+            padding: 0.8rem 1rem;
+            margin-top: 1rem;
+            border-left: 3px solid #94a3b8;
+            font-size: 0.9rem;
+        }
+        .etape-cost ul { margin-left: 1.2rem; margin-top: 0.3rem; color: #475569; }
+        .etape-cost li { margin-bottom: 0.2rem; }
+
+        /* Itinerary Bali (Hijau) */
+        #kegiatan .day-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.8rem;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid var(--color-kegiatan);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+        #kegiatan .day-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        }
+        #kegiatan h3 { color: #047857; margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .empty-state { color: #94a3b8; font-style: italic; font-size: 0.95rem; }
+
+        /* Total Box yang Fun & Clean */
+        .total-box {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: white;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
             text-align: center;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        .financial-note h3 {
-            color: var(--success);
+        .total-box::before {
+            content: '💸';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.05;
+            right: -20px;
+            bottom: -30px;
+        }
+
+        .total-box h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #cbd5e1;
             margin-bottom: 0.5rem;
+        }
+
+        .total-box .amount-total {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #34d399;
+            margin-bottom: 1rem;
+        }
+
+        /* Rincian Biaya dalam Box Total */
+        .cost-breakdown {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+            padding-bottom: 0.6rem;
+        }
+
+        .cost-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .cost-item span:last-child {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .split-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .split-card span {
+            display: block;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 0.3rem;
+        }
+
+        .split-card .amount-person {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
         }
 
         @media (max-width: 600px) {
-            .etape-header {
-                flex-direction: column;
-            }
+            header { padding: 2rem 1rem 3.5rem; }
+            header h1 { font-size: 1.8rem; }
+            .info-card { flex-direction: column; gap: 0.5rem; border-radius: 12px; }
+            .info-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.8rem;}
+            .info-item:last-child { border-bottom: none; padding-bottom: 0; }
+            .tabs { flex-direction: row; gap: 0.5rem; }
+            .tab-btn { padding: 0.8rem 0.5rem; font-size: 0.85rem; border-radius: 10px; }
+            .etape-card::before { left: -1.9rem; }
+            .total-box .amount-total { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Work Plan & Itinerary Darat</h1>
-        <p>Yogyakarta ⇄ Bali | Kendaraan: Toyota Veloz (5 Penumpang)</p>
+        <h1>🌴 Bali Roadtrip</h1>
+        <p>Toyota Veloz • 6 Orang (Berangkat) / 5 Orang (Pulang)</p>
     </header>
 
     <div class="container">
         
-        <!-- INFO PANEL -->
-        <div class="info-panel">
-            <p><strong>Panduan Operasional:</strong> Manajemen BBM menggunakan strategi <em>"Top-Up Setengah Tangki"</em> (Kapasitas: 43L). Pastikan peta offline sudah diunduh untuk area blank spot (Situbondo - Banyuwangi & Gilimanuk - Negara).</p>
+        <div class="info-card">
+            <div class="info-item"><span class="info-icon">🗺️</span><span class="info-value">± 750 KM</span></div>
+            <div class="info-item"><span class="info-icon">⏱️</span><span class="info-value">± 18.5 Jam</span></div>
+            <div class="info-item"><span class="info-icon">⛽</span><span class="info-value">1/2 Tangki Rule</span></div>
+            <div class="info-item"><span class="info-icon">⏰</span><span class="info-value">WIB ↔ WITA</span></div>
         </div>
 
-        <!-- SECTION: BERANGKAT -->
-        <h2 class="section-title">Arah Berangkat: Jogja → Bali <span>🛫</span></h2>
-        <div class="timeline">
+        <div class="tabs">
+            <button class="tab-btn tab-persiapan active" onclick="openTab('persiapan', this)">📝 Persiapan</button>
+            <button class="tab-btn tab-berangkat" onclick="openTab('berangkat', this)">🚙 Berangkat</button>
+            <button class="tab-btn tab-kegiatan" onclick="openTab('kegiatan', this)">🏄‍♂️ Kegiatan</button>
+            <button class="tab-btn tab-pulang" onclick="openTab('pulang', this)">🏡 Pulang</button>
+        </div>
+
+        <div id="persiapan" class="tab-content active">
             
-            <div class="card">
-                <div class="etape-header">
-                    <div class="etape-title">Etape 1: Keluar Jogja & Tol Jateng</div>
-                    <div class="badges">
-                        <span class="badge badge-time">04:00 - 07:00 WIB</span>
-                        <span class="badge badge-distance">± 100 KM</span>
-                    </div>
-                </div>
-                <p><strong>Rute:</strong> Jogja → GT Colomadu → Rest Area KM 519 A (Solo-Ngawi).</p>
-                <ul class="details-list">
-                    <li><span class="highlight">Istirahat:</span> Rest Area KM 519 A (45 Menit). Sarapan & peregangan.</li>
-                    <li><span class="highlight">Status BBM:</span> Aman (~70%).</li>
-                    <li><span class="highlight">Logistik:</span> Ganti Supir 1.</li>
+            <div class="checklist-card">
+                <h3>🛠️ 1. Cek Bengkel (H-7 Sebelum Berangkat)</h3>
+                <ul>
+                    <li><strong>Sistem Pengereman:</strong> Turunan curam & jalan tol butuh kampas rem tebal. Minta mekanik cek ketebalan kampas rem depan-belakang.</li>
+                    <li><strong>Fluida Mesin:</strong> Pastikan oli mesin belum waktunya ganti (jika mepet, mending ganti). Cek level air radiator (coolant) dan minyak rem.</li>
+                    <li><strong>Spooring & Balancing:</strong> Kalau setir sudah terasa narik atau getar di kecepatan tinggi, wajib spooring-balancing agar supir tidak cepat lelah di jalan tol.</li>
+                    <li><strong>Lampu & Kelistrikan:</strong> Tes headlamp, high-beam, sein, dan lampu rem. Hutan Baluran sangat gelap di malam hari.</li>
                 </ul>
             </div>
 
-            <div class="card">
-                <div class="etape-header">
-                    <div class="etape-title">Etape 2: Tol Jatim & Isi BBM Utama</div>
-                    <div class="badges">
-                        <span class="badge badge-time">07:00 - 10:30 WIB</span>
-                        <span class="badge badge-distance">± 206 KM</span>
-                        <span class="badge badge-gas">WAJIB ISI FULL</span>
-                    </div>
-                </div>
-                <p><strong>Rute:</strong> KM 519 A → Rest Area KM 725 A (Surabaya-Mojokerto).</p>
-                <ul class="details-list">
-                    <li><span class="highlight">Istirahat:</span> Rest Area KM 725 A (1 Jam). Makan berat sebelum keluar tol.</li>
-                    <li><span class="highlight">Status BBM:</span> Indikator ~35%. Antre SPBU & Top-Up Full.</li>
-                    <li><span class="highlight">Logistik:</span> Ganti Supir 2.</li>
+            <div class="checklist-card">
+                <h3>🚗 2. Cek Sederhana (H-1 Keberangkatan)</h3>
+                <ul>
+                    <li><strong>Tekanan Angin Ban (Penting!):</strong> Karena Toyota Veloz akan muatan penuh (5-6 orang + barang), isi ban <strong>Depan 36 PSI</strong> dan <strong>Belakang 38-39 PSI</strong> (ukur saat ban dingin). Pastikan ban serep juga terisi penuh.</li>
+                    <li><strong>Air Wiper:</strong> Pastikan tabung air wiper terisi penuh dan dicampur cairan pembersih kaca khusus (penting kalau kaca kena serangga di jalan tol).</li>
+                    <li><strong>Kondisi Kolong:</strong> Intip sebentar kolong mobil di pagi hari, pastikan tidak ada tetesan oli atau cairan aneh di garasi.</li>
                 </ul>
             </div>
 
-            <div class="card">
-                <div class="etape-header">
-                    <div class="etape-title">Etape 3: Pantura & Situbondo</div>
-                    <div class="badges">
-                        <span class="badge badge-time">10:30 - 14:15 WIB</span>
-                        <span class="badge badge-distance">± 215 KM</span>
-                        <span class="badge badge-gas">WAJIB ISI FULL</span>
-                    </div>
-                </div>
-                <p><strong>Rute:</strong> Keluar GT Probolinggo Timur → Kota Situbondo.</p>
-                <ul class="details-list">
-                    <li><span class="highlight">Istirahat:</span> SPBU Besar Kota Situbondo (45 Menit).</li>
-                    <li><span class="highlight">Status BBM:</span> Indikator ~50%. Top-Up Full sblm Hutan Baluran.</li>
-                    <li><span class="highlight">Logistik:</span> Ganti Supir 3.</li>
+            <div class="checklist-card">
+                <h3>💳 3. Kesiapan E-Money & Uang Tunai</h3>
+                <ul>
+                    <li><strong>Strategi E-Toll (Dibagi 2):</strong> Top-up cukup <strong>Rp 600.000</strong> untuk perjalanan Berangkat (Tol Jogja - Probolinggo ± Rp 550.000). Nanti saat mau pulang dari Bali, baru top-up lagi <strong>Rp 600.000</strong>. Strategi ini jauh lebih aman agar saldo tidak hilang besar jika kartu terselip selama liburan.</li>
+                    <li><strong>E-Toll Backup (Pegang Penumpang Lain):</strong> Sediakan 1 kartu cadangan dengan top-up darurat <strong>Rp 200.000</strong>. Dipakai hanya jika kartu utama rusak atau gagal tap di gerbang tol.</li>
+                    <li><strong>Uang Tunai (Siapkan Rp 1.000 & Rp 2.000):</strong> Siapkan total ± Rp 300.000 uang tunai bersama. Sangat penting menukarkan banyak pecahan <strong>Rp 1.000</strong> untuk "Pak Ogah" di persimpangan jalan Pantura, toilet umum, dan parkir liar.</li>
+                    <li><strong>Metode Bayar Makan (QRIS vs Tunai):</strong> Anggaran makan dihitung Rp 50.000 per orang sekali makan. Di rest area tol besar, bayar pakai QRIS/M-Banking sangat aman. Namun di daerah Pantura, Situbondo, atau jalur Gilimanuk, sinyal HP sering drop atau warung lokal hanya menerima tunai. Seluruh rombongan wajib memegang uang tunai pribadi yang cukup untuk jaga-jaga bayar makan.</li>
                 </ul>
             </div>
 
-            <div class="card">
-                <div class="etape-header">
-                    <div class="etape-title">Etape 4: Baluran & Penyeberangan</div>
-                    <div class="badges">
-                        <span class="badge badge-time">14:15 - 18:30 WIB</span>
-                        <span class="badge badge-distance">± 90 KM</span>
-                    </div>
-                </div>
-                <p><strong>Rute:</strong> Hutan Baluran → Pelabuhan Ketapang.</p>
-                <ul class="details-list">
-                    <li><span class="highlight">Aktivitas:</span> Matikan mesin di kapal (± 2 Jam). Rombongan istirahat/tidur di dek.</li>
-                    <li><span class="highlight">Tiket:</span> E-Ticket Kapal Feri (Ferizy).</li>
+            <div class="checklist-card">
+                <h3>📑 4. Dokumen & Kelengkapan Darat</h3>
+                <ul>
+                    <li><strong>KTP & SIM A Asli:</strong> Kumpulkan KTP semua anggota agar tidak ada yang tertinggal (wajib untuk naik kapal). Siapkan SIM fisik untuk para supir. STNK pastikan pajak hidup.</li>
+                    <li><strong>Aplikasi Ferizy:</strong> Minimal 2 orang sudah *install* Ferizy dan saldo M-Banking/E-Wallet cukup untuk bayar tiket online.</li>
+                    <li><strong>Survival Kit:</strong> Obat-obatan pribadi, tolak angin, obat lambung, kantong sampah plastik, bantal leher, dan kacamata hitam untuk menghalau silau pantura.</li>
                 </ul>
             </div>
 
-            <div class="card">
-                <div class="etape-header">
-                    <div class="etape-title">Etape 5: Gilimanuk - Denpasar</div>
-                    <div class="badges">
-                        <span class="badge badge-time">19:30 - 23:30 WITA</span>
-                        <span class="badge badge-distance">± 130 KM</span>
-                    </div>
-                </div>
-                <p><strong>Rute:</strong> Pelabuhan Gilimanuk → Negara → Tabanan → Denpasar.</p>
-                <ul class="details-list">
-                    <li><span class="highlight">Logistik:</span> Ganti Supir 4 (Pilih yang paling segar usai tidur di kapal).</li>
-                    <li><span class="highlight">Status BBM:</span> Sisa bensin dari Situbondo masih aman.</li>
+            <div class="checklist-card">
+                <h3>🔙 5. Checklist H-1 Kepulangan (Bali -> Jogja)</h3>
+                <ul>
+                    <li><strong>Isi Bensin Malam Hari:</strong> Karena jadwal pulang sangat subuh (03:00 WITA), pastikan mobil sudah diisi bensin <strong>Full Tank pada malam harinya</strong> sebelum kembali ke penginapan. Buka SPBU subuh kadang tidak menentu.</li>
+                    <li><strong>Top-up E-Toll Pulang:</strong> Jangan lupa top-up kembali E-Toll utama minimal Rp 600.000 untuk rute tol arah barat (Probolinggo - Jogja).</li>
+                    <li><strong>Tiket Ferizy:</strong> Beli tiket penyeberangan Gilimanuk - Ketapang malam sebelumnya untuk jadwal masuk pelabuhan jam 06:00 atau 07:00 WITA.</li>
+                    <li><strong>Packing & Istirahat:</strong> Masukkan barang ke bagasi di malam hari agar subuh tinggal berangkat. Supir 1 dan 2 wajib tidur cukup karena akan menyetir di kegelapan!</li>
                 </ul>
             </div>
 
         </div>
 
-        <!-- SECTION: PULANG -->
-        <h2 class="section-title">Arah Pulang: Bali → Jogja <span>🛬</span></h2>
-        <div class="timeline">
+        <div id="berangkat" class="tab-content">
+            <div class="timeline">
+                
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🛣️ Etape 1: Keluar Jogja & Tol Jateng</div>
+                        <div class="badges">
+                            <span class="badge badge-dist">± 100 km</span>
+                            <span class="badge badge-time">± 2 Jam 15 Mnt</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><span class="highlight">04:00 WIB:</span> Berangkat dari titik kumpul (Jogja). Jalanan subuh lancar menuju GT terdekat (Colomadu).</p>
+                        <p><span class="highlight">05:00 - 06:15 WIB:</span> Tol Trans Jawa menuju Rest Area KM 519 A (Solo-Ngawi).</p>
+                        <p><span class="highlight">06:15 - 07:00 WIB (Istirahat 45 Menit):</span> <strong>Ganti Supir 1.</strong> Sarapan santai, toilet, peregangan. <em>BBM masih aman (~70%).</em></p>
+                        <div class="etape-cost">
+                            <strong>💰 Rincian Biaya Keluar:</strong>
+                            <ul>
+                                <li>Sarapan & Kopi Pagi (6 Orang • QRIS/Tunai): ± Rp 250.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🛣️ Etape 2: Tol Jatim & Isi Bensin Utama</div>
+                        <div class="badges">
+                            <span class="badge badge-dist">± 206 km</span>
+                            <span class="badge badge-time">± 2 Jam 30 Mnt</span>
+                            <span class="badge badge-gas">⛽ WAJIB ISI FULL</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><span class="highlight">07:00 - 09:30 WIB:</span> Lanjut Tol menuju Rest Area KM 725 A (Surabaya-Mojokerto).</p>
+                        <p><span class="highlight">09:30 - 10:30 WIB (Istirahat Panjang 1 Jam):</span> <strong>Ganti Supir 2.</strong> Supir ini bertugas transisi keluar tol. Waktunya makan siang/berat biar tidak lapar di jalan Pantura.</p>
+                        <p><span class="highlight">Status BBM:</span> Indikator ~35%. Antre SPBU & Top-Up sampai Full Tank.</p>
+                        <div class="etape-cost">
+                            <strong>💰 Rincian Biaya Keluar:</strong>
+                            <ul>
+                                <li>Isi BBM (Full Tank • QRIS/Tunai): ± Rp 300.000</li>
+                                <li>Makan Siang Besar (6 Orang • QRIS): ± Rp 300.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🌲 Etape 3: Jalur Pantura Situbondo</div>
+                        <div class="badges">
+                            <span class="badge badge-dist">± 215 km</span>
+                            <span class="badge badge-time">± 3 Jam</span>
+                            <span class="badge badge-gas">⛽ WAJIB ISI FULL</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><span class="highlight">10:30 - 11:30 WIB:</span> Menuju dan keluar dari GT Probolinggo Timur.</p>
+                        <p><span class="highlight">11:30 - 13:30 WIB:</span> Melintasi Pantura Probolinggo - Kota Situbondo (Lalin padat truk/bus).</p>
+                        <p><span class="highlight">13:30 - 14:15 WIB (Istirahat 45 Menit):</span> Berhenti di SPBU Besar Situbondo. <strong>Ganti Supir 3</strong> (fokus rute kelok hutan). Peregangan & toilet.</p>
+                        <p><span class="highlight-ferizy">INFO PENTING TIKET:</span> Buka aplikasi Ferizy di titik ini! Beli tiket untuk penyeberangan 17:00 atau 18:00 WIB agar aman dari risiko macet di Baluran.</p>
+                        <p><span class="highlight">Status BBM:</span> Indikator ~50-60%. Wajib di-Full-kan sebelum menembus Hutan Baluran.</p>
+                        <div class="etape-cost">
+                            <strong>💰 Rincian Biaya Keluar:</strong>
+                            <ul>
+                                <li>Tol Trans Jawa (Tiba Probolinggo): ± Rp 550.000</li>
+                                <li>Isi BBM (Top-up • Tunai/QRIS): ± Rp 200.000</li>
+                                <li>Jajan/Camilan & Minum Minimarket: ± Rp 150.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🚢 Etape 4: Baluran & Penyeberangan</div>
+                        <div class="badges">
+                            <span class="badge badge-dist">± 90 km</span>
+                            <span class="badge badge-time">± 2 Jam 15 Mnt (Darat)</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><span class="highlight">14:15 - 16:30 WIB:</span> Menikmati Hutan Baluran & Wongsorejo menuju Pelabuhan Ketapang.</p>
+                        <p><span class="highlight">16:30 - 18:30 WIB (Penyeberangan):</span> Durasi ± 2 Jam. Matikan mesin, seluruh anggota naik ke dek. Waktunya makan malam dan istirahat total kena angin laut.</p>
+                        <div class="etape-cost">
+                            <strong>💰 Rincian Biaya Keluar:</strong>
+                            <ul>
+                                <li>Tiket Kapal Feri (Pembelian Online via App): ± Rp 215.000</li>
+                                <li>Makan Malam di Kapal (6 Orang • *Disarankan Tunai karena sinyal laut*): ± Rp 300.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🌴 Etape 5: Gilimanuk - Denpasar</div>
+                        <div class="badges">
+                            <span class="badge badge-dist">± 130 km</span>
+                            <span class="badge badge-time">± 3.5 Jam</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><em>*Zona waktu maju +1 jam menjadi WITA*</em></p>
+                        <p><span class="highlight">19:30 - 20:00 WITA (Pemeriksaan 30 Menit):</span> Kapal sandar. Pemeriksaan KTP. <strong>Ganti Supir 4</strong> (pilih yang paling fresh untuk tembus rute malam).</p>
+                        <p><span class="highlight">20:00 - 23:30 WITA:</span> Rute Negara - Tabanan - Denpasar.</p>
+                        <p><span class="highlight">23:30 WITA:</span> Tiba di lokasi tujuan! Bensin dari Situbondo aman bersisa.</p>
+                    </div>
+                </div>
+
+            </div>
             
-            <div class="card">
-                <div class="etape-header">
-                    <div class="etape-title">Etape 1: Denpasar - Gilimanuk & Kapal</div>
-                    <div class="badges">
-                        <span class="badge badge-time">03:00 - 08:00 WITA</span>
-                        <span class="badge badge-distance">± 130 KM</span>
-                    </div>
+            <div class="total-box">
+                <h3>Estimasi Biaya Jalan (Berangkat)</h3>
+                
+                <div class="cost-breakdown">
+                    <div class="cost-item"><span>⛽ BBM (Total Top-up)</span><span>Rp 500.000</span></div>
+                    <div class="cost-item"><span>🛣️ Tol Trans Jawa</span><span>Rp 550.000</span></div>
+                    <div class="cost-item"><span>🚢 Tiket Kapal Feri</span><span>Rp 215.000</span></div>
+                    <div class="cost-item"><span>🍽️ Total Makan & Jajan (6 Org - QRIS/Tunai)</span><span>Rp 1.000.000</span></div>
+                    <div class="cost-item"><span>🪙 Uang Tunai Bersama (Pak Ogah Rp 1.000/Toilet)</span><span>Rp 150.000</span></div>
                 </div>
-                <p><strong>Rute:</strong> Denpasar → Pelabuhan Gilimanuk → Ketapang (Jawa).</p>
-                <ul class="details-list">
-                    <li><span class="highlight">Kondisi:</span> Berangkat dgn BBM Full. Jalanan subuh lancar (Sunrise drive).</li>
-                    <li><span class="highlight">Istirahat:</span> Di atas kapal feri. Ganti Supir 1 saat sandar di Ketapang.</li>
-                </ul>
-            </div>
 
-            <div class="card">
-                <div class="etape-header">
-                    <div class="etape-title">Etape 2: Ketapang - Situbondo</div>
-                    <div class="badges">
-                        <span class="badge badge-time">07:00 - 10:00 WIB</span>
-                        <span class="badge badge-distance">± 90 KM</span>
-                        <span class="badge badge-gas">WAJIB ISI FULL</span>
-                    </div>
+                <div class="amount-total">Total: Rp 2.415.000</div>
+                
+                <div class="split-card">
+                    <span>👥 Patungan (Dibagi 6 Org)</span>
+                    <div class="amount-person">Rp 402.500 / Orang</div>
                 </div>
-                <p><strong>Rute:</strong> Ketapang → Hutan Baluran → Kota Situbondo.</p>
-                <ul class="details-list">
-                    <li><span class="highlight">Istirahat:</span> SPBU Besar Kota Situbondo (45 Menit).</li>
-                    <li><span class="highlight">Status BBM:</span> Top-Up Full sblm masuk kepadatan Pantura & Tol.</li>
-                    <li><span class="highlight">Logistik:</span> Ganti Supir 2.</li>
-                </ul>
             </div>
-
-            <div class="card">
-                <div class="etape-header">
-                    <div class="etape-title">Etape 3: Pantura - Tol Jatim</div>
-                    <div class="badges">
-                        <span class="badge badge-time">10:00 - 15:00 WIB</span>
-                        <span class="badge badge-distance">± 215 KM</span>
-                        <span class="badge badge-gas">WAJIB ISI FULL</span>
-                    </div>
-                </div>
-                <p><strong>Rute:</strong> Situbondo → GT Probolinggo Timur → Rest Area KM 726 B.</p>
-                <ul class="details-list">
-                    <li><span class="highlight">Istirahat:</span> Rest Area KM 726 B (1 Jam). Makan siang & ibadah.</li>
-                    <li><span class="highlight">Status BBM:</span> Top-Up Full untuk mengamankan sisa rute tol.</li>
-                    <li><span class="highlight">Logistik:</span> Ganti Supir 3 (Spesialis jalan tol lurus).</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <div class="etape-header">
-                    <div class="etape-title">Etape 4: Tol Trans Jawa - Jogja</div>
-                    <div class="badges">
-                        <span class="badge badge-time">15:00 - 20:00 WIB</span>
-                        <span class="badge badge-distance">± 300 KM</span>
-                    </div>
-                </div>
-                <p><strong>Rute:</strong> KM 726 B → Rest Area KM 519 B / 456 B → GT Colomadu/Klaten → Jogja.</p>
-                <ul class="details-list">
-                    <li><span class="highlight">Istirahat:</span> Stop sore hari untuk peregangan, ngopi, & Ganti Supir 4.</li>
-                    <li><span class="highlight">Tiba:</span> Estimasi sampai Jogja pukul 20:00 WIB.</li>
-                </ul>
-            </div>
-
         </div>
 
-        <!-- FINANCIAL RECORD NOTE -->
-        <div class="financial-note">
-            <h3>Sistem Pencatatan Keuangan</h3>
-            <p>Seluruh rincian transaksi perjalanan ini (E-Toll, BBM, Tiket Kapal, dan Konsumsi Rombongan) dicatat secara terpusat. Untuk input data ke dalam sistem bot/spreadsheet, <strong>satukan semua transaksi tersebut ke dalam 1 kategori utama, yaitu: Pengeluaran.</strong></p>
+        <div id="kegiatan" class="tab-content">
+            <div class="day-card">
+                <h3>✨ Hari 1: Kedatangan & Check-in</h3>
+                <p class="empty-state">Detail kegiatan dan spot foto akan diisi di sini...</p>
+            </div>
+            <div class="day-card">
+                <h3>🌊 Hari 2: Eksplorasi Bali Selatan</h3>
+                <p class="empty-state">Rencana rute pantai dan beach club akan diisi di sini...</p>
+            </div>
+            <div class="day-card">
+                <h3>⛰️ Hari 3: Wisata Alam & Budaya</h3>
+                <p class="empty-state">Kunjungan ke pura atau area Ubud akan diisi di sini...</p>
+            </div>
+            <div class="day-card">
+                <h3>🏖️ Hari 4: Aktivitas Bebas</h3>
+                <p class="empty-state">Jadwal bersantai atau watersport akan diisi di sini...</p>
+            </div>
+            <div class="day-card">
+                <h3>🛍️ Hari 5: Kuliner & Oleh-oleh</h3>
+                <p class="empty-state">Daftar tempat makan dan pusat belanja akan diisi di sini...</p>
+            </div>
+            <div class="day-card">
+                <h3>🌅 Hari 6: Sunset Terakhir & Packing</h3>
+                <p class="empty-state">Persiapan sebelum kembali menyeberang besok...</p>
+            </div>
+        </div>
+
+        <div id="pulang" class="tab-content">
+            <div class="timeline">
+                
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🌅 Etape 1: Denpasar → Gilimanuk</div>
+                        <div class="badges">
+                            <span class="badge badge-dist">± 130 km</span>
+                            <span class="badge badge-time">± 3 Jam</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><span class="highlight-ferizy">INFO PENTING TIKET:</span> Pesan tiket Ferizy sebelum tidur/check-out atau maksimal saat istirahat ngopi di jalur Tabanan. Pilih jadwal kapal jam 06:00 atau 07:00 WITA.</p>
+                        <p><span class="highlight">03:00 WITA:</span> Berangkat dari Denpasar. Kondisi bensin dipastikan Full Tank <strong>(wajib diisi pada malam sebelumnya agar subuh tinggal gas)</strong>.</p>
+                        <p><span class="highlight">03:00 - 06:00 WITA:</span> Rute Tabanan - Negara - Gilimanuk. Jalanan subuh kosong, supir wajib waspada minimnya penerangan.</p>
+                        <p><span class="highlight">06:00 WITA:</span> Tiba di Pelabuhan Gilimanuk. Waktu meregangkan badan.</p>
+                        <div class="etape-cost">
+                            <strong>💰 Rincian Biaya Keluar:</strong>
+                            <ul>
+                                <li>Kopi Pagi / Bekal Roti (5 Orang • Tunai): ± Rp 150.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🚢 Etape 2: Penyeberangan ke Jawa</div>
+                        <div class="badges">
+                            <span class="badge badge-time">± 2 Jam</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><span class="highlight">06:00 - 08:00 WITA:</span> Antre dan kapal berlayar. Matikan mesin. Naik ke dek menikmati sarapan & sunrise. <strong>Ganti Supir 1</strong> (yang paling fresh untuk rute Pantura pagi).</p>
+                        <p><em>*Jam HP mundur kembali -1 jam menjadi WIB saat sandar*</em></p>
+                        <p><span class="highlight">07:00 WIB:</span> Kapal sandar dan keluar Pelabuhan Ketapang.</p>
+                        <div class="etape-cost">
+                            <strong>💰 Rincian Biaya Keluar:</strong>
+                            <ul>
+                                <li>Tiket Kapal Feri (Pembelian Online): ± Rp 215.000</li>
+                                <li>Sarapan Pagi di Kapal (5 Orang • Tunai): ± Rp 250.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🌲 Etape 3: Hutan Baluran → Situbondo</div>
+                        <div class="badges">
+                            <span class="badge badge-dist">± 90 km</span>
+                            <span class="badge badge-time">± 2 Jam 15 Mnt</span>
+                            <span class="badge badge-gas">⛽ WAJIB ISI FULL</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><span class="highlight">07:00 - 09:15 WIB:</span> Melintasi Wongsorejo & Baluran. Visibilitas maksimal, lalin mulai ramai.</p>
+                        <p><span class="highlight">09:15 - 10:00 WIB (Istirahat 45 Menit):</span> Berhenti di SPBU Besar Situbondo. Toilet, ngemil santai. <strong>Ganti Supir 2</strong> (untuk etape Pantura ke tol).</p>
+                        <p><span class="highlight">Status BBM:</span> Indikator ~50-60%. Wajib di-Full-kan sebelum menembus kemacetan Pantura.</p>
+                        <div class="etape-cost">
+                            <strong>💰 Rincian Biaya Keluar:</strong>
+                            <ul>
+                                <li>Isi BBM (Top-up): ± Rp 200.000</li>
+                                <li>Jajan / Camilan & Minum Minimarket: ± Rp 150.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🛣️ Etape 4: Pantura → Rest Area KM 726 B</div>
+                        <div class="badges">
+                            <span class="badge badge-dist">± 215 km</span>
+                            <span class="badge badge-time">± 3.5 Jam</span>
+                            <span class="badge badge-gas">⛽ WAJIB ISI FULL</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><span class="highlight">10:00 - 13:00 WIB:</span> Menyusuri Pantura Situbondo → GT Probolinggo Timur. Lalin padat truk logistik.</p>
+                        <p><span class="highlight">13:00 - 14:00 WIB:</span> Masuk tol melaju menuju KM 726 B (Wringinanom).</p>
+                        <p><span class="highlight">14:00 - 15:00 WIB (Istirahat Panjang 1 Jam):</span> Makan siang, ibadah. <strong>Ganti Supir 3</strong> (terbiasa trek lurus tol). Langsung antre SPBU.</p>
+                        <p><span class="highlight">Status BBM:</span> Top-up sampai Full untuk mengamankan sisa perjalanan sampai Jogja.</p>
+                        <div class="etape-cost">
+                            <strong>💰 Rincian Biaya Keluar:</strong>
+                            <ul>
+                                <li>Isi BBM (Top-up Full): ± Rp 250.000</li>
+                                <li>Makan Siang Besar (5 Orang • QRIS/Tunai): ± Rp 250.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="etape-card">
+                    <div class="etape-header">
+                        <div class="etape-title">🏡 Etape 5: Tol Trans Jawa → Jogja</div>
+                        <div class="badges">
+                            <span class="badge badge-dist">± 300 km</span>
+                            <span class="badge badge-time">± 4 Jam</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <p><span class="highlight">15:00 - 17:00 WIB:</span> Lintas tol Mojokerto → Sragen/Solo.</p>
+                        <p><span class="highlight">17:00 - 17:45 WIB (Istirahat Sore):</span> Berhenti di KM 519 B atau 456 B. Peregangan, beli kopi/makan malam ringan. <strong>Ganti Supir 4</strong> untuk rute keluar tol.</p>
+                        <p><span class="highlight">17:45 - 20:00 WIB:</span> Keluar Tol (Colomadu/Klaten) → Masuk Jogja.</p>
+                        <p><span class="highlight">20:00 WIB:</span> Tiba kembali di Yogyakarta! Bensin sisa banyak.</p>
+                        <div class="etape-cost">
+                            <strong>💰 Rincian Biaya Keluar:</strong>
+                            <ul>
+                                <li>Tarif Tol (Total arah Barat): ± Rp 550.000</li>
+                                <li>Makan Malam Ringan / Kopi Sore (5 Orang): ± Rp 200.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="total-box">
+                <h3>Estimasi Biaya Jalan (Pulang)</h3>
+                
+                <div class="cost-breakdown">
+                    <div class="cost-item"><span>⛽ BBM (Total Top-up)</span><span>Rp 450.000</span></div>
+                    <div class="cost-item"><span>🛣️ Tol Trans Jawa</span><span>Rp 550.000</span></div>
+                    <div class="cost-item"><span>🚢 Tiket Kapal Feri</span><span>Rp 215.000</span></div>
+                    <div class="cost-item"><span>🍽️ Total Makan & Jajan (5 Org - QRIS/Tunai)</span><span>Rp 1.000.000</span></div>
+                    <div class="cost-item"><span>🪙 Uang Tunai Bersama (Pak Ogah/Toilet)</span><span>Rp 150.000</span></div>
+                </div>
+
+                <div class="amount-total">Total: Rp 2.365.000</div>
+                
+                <div class="split-card">
+                    <span>👥 Patungan (Dibagi 5 Org)</span>
+                    <div class="amount-person">Rp 473.000 / Orang</div>
+                </div>
+            </div>
         </div>
 
     </div>
+
+    <script>
+        function openTab(tabId, element) {
+            let contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            let buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
+        }
+    </script>
 </body>
 </html>
