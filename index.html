@@ -199,13 +199,12 @@
 
         <div class="tabs">
             <button class="tab-btn tab-persiapan active" onclick="openTab('persiapan', this)">📝 Persiapan</button>
-            <button class="tab-btn tab-rombongan" onclick="openTab('rombongan', this)">👥 Anggota</button>
+            <button class="tab-btn tab-rombongan" onclick="openTab('rombongan', this)">👥 Anggota & Anggaran</button>
             <button class="tab-btn tab-berangkat" onclick="openTab('berangkat', this)">🚙 Berangkat</button>
             <button class="tab-btn tab-kegiatan" onclick="openTab('kegiatan', this)">⛪ Kegiatan</button>
             <button class="tab-btn tab-pulang" onclick="openTab('pulang', this)">🏡 Pulang</button>
         </div>
 
-        <!-- TAB PERSIAPAN -->
         <div id="persiapan" class="tab-content active">
             <div class="checklist-card">
                 <h3>🛠️ 1. Cek Bengkel (H-7 Sebelum Berangkat)</h3>
@@ -235,7 +234,6 @@
             </div>
         </div>
 
-        <!-- TAB ROMBONGAN -->
         <div id="rombongan" class="tab-content">
             <div class="alert-benchmark">
                 <strong>👥 PROFIL ANGGOTA KELUARGA & RUMAH SEWA:</strong><br>
@@ -270,13 +268,13 @@
                 <div class="profile-card">
                     <span class="profile-emoji">👴🏼</span>
                     <div class="profile-name">Ferdinal</div>
-                    <div class="profile-role role-pria">Pria (Lansia)</div>
+                    <div class="profile-role role-pria">Pria</div>
                     <div class="profile-stay">Kabin Pergi Saja<br>Inap 5 Malam</div>
                 </div>
                 <div class="profile-card">
                     <span class="profile-emoji">🧓🏼</span>
                     <div class="profile-name">Rina</div>
-                    <div class="profile-role role-wanita">Wanita (Lansia)</div>
+                    <div class="profile-role role-wanita">Wanita</div>
                     <div class="profile-stay">Kabin Pergi Saja<br>Inap 5 Malam</div>
                 </div>
                 <div class="profile-card">
@@ -300,49 +298,46 @@
             </div>
 
             <div class="total-box" style="margin-top: 0;">
-                <h3>Rincian Pengeluaran Per Orang (Adil & Transparan)</h3>
+                <h3>Rincian Pengeluaran Per Orang (Adil, All-In, & Aman)</h3>
                 <div class="cost-breakdown" style="background: none; border: none; margin: 0; padding: 0;">
                     
                     <div class="split-card">
-                        <span>1. Truna, Yonna, Yuliana (Masing-masing Bayar):</span>
-                        <div class="amount-person">Rp 1.515.500 per orang</div>
+                        <span>1. Truna, Yonna, Yuliana, Uti Suwarti (Full Trip):</span>
+                        <div class="amount-person">Rp 2.740.000 per orang</div>
                         <ul>
-                            <li>Patungan Homestay (5 Malam): Rp 640.000</li>
-                            <li>Patungan Jalan Pergi (Bagi 6): Rp 402.500</li>
-                            <li>Patungan Jalan Pulang (Bagi 5): Rp 473.000</li>
-                            <li>Patungan Operasional & BBM Seminggu di Bali (Bagi 9): Rp 95.000</li>
+                            <li>Homestay (5 Malam): Rp 640.000</li>
+                            <li>Kas Jalan Pergi (Bagi 6): Rp 400.000</li>
+                            <li>Kas Jalan Pulang (Bagi 5): Rp 500.000</li>
+                            <li>Kas All-In Bali (BBM 2 Mobil, Wisata & Makan 3x Sehari): Rp 1.200.000</li>
                         </ul>
                     </div>
 
                     <div class="split-card">
-                        <span>2. Uti Suwarti (Lansia - Full Trip):</span>
-                        <div class="amount-person">Rp 1.605.500</div>
+                        <span>2. Ferdinal & Rina (Hanya Ikut Pergi):</span>
+                        <div class="amount-person">Rp 2.240.000 per orang</div>
                         <ul>
-                            <li>Homestay: Rp 640.000 | Pergi: Rp 402.500 | Pulang: Rp 473.000 | Operasional Bali: Rp 90.000</li>
+                            <li>Homestay (5 Malam): Rp 640.000</li>
+                            <li>Kas Jalan Pergi (Bagi 6): Rp 400.000</li>
+                            <li>Kas All-In Bali (BBM 2 Mobil, Wisata & Makan 3x Sehari): Rp 1.200.000</li>
                         </ul>
                     </div>
 
                     <div class="split-card">
-                        <span>3. Ferdinal & Rina (Hanya Ikut Pergi):</span>
-                        <div class="amount-person">Rp 1.137.500 per orang</div>
+                        <span>3. Jones & Yemima Silitonga (Bertemu di Bali):</span>
+                        <div class="amount-person">Rp 1.840.000 per orang</div>
                         <ul>
-                            <li>Homestay (5 Malam): Rp 640.000 | Pergi: Rp 402.500 | Operasional Bali: Rp 95.000</li>
-                        </ul>
-                    </div>
-
-                    <div class="split-card">
-                        <span>4. Jones Silitonga & Yemima Silitonga (Bertemu di Bali):</span>
-                        <div class="amount-person">Rp 735.000 per orang</div>
-                        <ul>
-                            <li>Homestay (5 Malam): Rp 640.000 | Operasional Bali: Rp 95.000</li>
+                            <li>Homestay (5 Malam): Rp 640.000</li>
+                            <li>Kas All-In Bali (BBM 2 Mobil, Wisata & Makan 3x Sehari): Rp 1.200.000</li>
                         </ul>
                     </div>
 
                     <div class="split-card" style="border-color: #f472b6;">
-                        <span style="color: #fbcfe8;">5. Yuyun (Masuk Sabtu & Ikut Pulang):</span>
-                        <div class="amount-person" style="color: #34d399;">Rp 952.000</div>
+                        <span style="color: #fbcfe8;">4. Yuyun (Masuk Sabtu & Ikut Pulang):</span>
+                        <div class="amount-person" style="color: #34d399;">Rp 1.484.000</div>
                         <ul>
-                            <li>Homestay (3 Malam): Rp 384.000 | Pulang: Rp 473.000 | Operasional Bali: Rp 95.000</li>
+                            <li>Homestay (3 Malam): Rp 384.000</li>
+                            <li>Kas Jalan Pulang (Bagi 5): Rp 500.000</li>
+                            <li>Kas All-In Bali (Proporsional / Setengah Trip): Rp 600.000</li>
                         </ul>
                     </div>
 
@@ -350,7 +345,6 @@
             </div>
         </div>
 
-        <!-- TAB BERANGKAT -->
         <div id="berangkat" class="tab-content">
             <div class="alert-benchmark">
                 <strong>🚙 LINI WAKTU RAMAH LANSIA (BERANGKAT):</strong><br>
@@ -483,7 +477,6 @@
             </div>
         </div>
 
-        <!-- TAB KEGIATAN -->
         <div id="kegiatan" class="tab-content">
             <div class="checklist-card">
                 <h3>⛪ Jadwal Acara Pernikahan (Senin, 15 Juni 2026)</h3>
@@ -504,21 +497,20 @@
             </div>
 
             <div class="total-box">
-                <h3>Estimasi Anggaran Wisata Lokal (Wajar Selama 1 Minggu)</h3>
+                <h3>Estimasi Dana Kas "All-In" Seminggu di Bali</h3>
                 <div class="cost-breakdown">
-                    <div class="cost-item"><span>⛽ BBM Operasional Seminggu (Macet + AC ON Terus)</span><span>Rp 650.000</span></div>
-                    <div class="cost-item"><span>🛣️ Tol Bali Mandara (Akses Bandara/Selatan)</span><span>Rp 52.000</span></div>
-                    <div class="cost-item"><span>🅿️ Karcis Parkir Resmi & Tunai Wisata</span><span>Rp 150.000</span></div>
+                    <div class="cost-item"><span>🍽️ Konsumsi Rombongan (3x Sehari, Resto & Lokal)</span><span>± Rp 6.500.000</span></div>
+                    <div class="cost-item"><span>⛽ BBM Operasional 2 Mobil (Macet + AC ON)</span><span>± Rp 1.000.000</span></div>
+                    <div class="cost-item"><span>🎟️ Tiket Wisata (GWK, Pantai) & Karcis Parkir 2 Mobil</span><span>± Rp 1.500.000</span></div>
+                    <div class="cost-item"><span>🛣️ Tol Bali Mandara & Biaya Tak Terduga</span><span>± Rp 1.200.000</span></div>
                 </div>
-                <div class="amount-total">Total Operasional Bali: Rp 852.000</div>
+                <div class="amount-total">Total Kas Bali: Rp 10.200.000</div>
                 <div class="split-card" style="margin-bottom: 0;">
-                    <span>Patungan Operasional Bali (Dibagi Rata 9 Orang):</span>
-                    <div class="amount-person">Rp 94.666 / Orang</div>
+                    <span>Dana ini adalah hasil kumpul 8 orang x Rp 1.2jt dan 1 orang x Rp 600rb. Sengaja di-markup agar liburan tenang dan sisa uang bisa digunakan untuk subsidi oleh-oleh di hari terakhir.</span>
                 </div>
             </div>
         </div>
 
-        <!-- TAB PULANG -->
         <div id="pulang" class="tab-content">
             <div class="alert-benchmark">
                 <strong>🏡 LINI WAKTU RAMAH LANSIA (PULANG):</strong><br>
