@@ -72,13 +72,18 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem; }
+        
         .profile-card {
             background: var(--card-bg); border-radius: 16px; padding: 1.5rem 1rem; text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-bottom: 4px solid var(--color-rombongan);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); animation: popIn 0.5s ease backwards;
         }
-        .profile-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 12px 20px rgba(236, 72, 153, 0.15); }
-        .profile-emoji { font-size: 2.5rem; margin-bottom: 0.5rem; display: inline-block; background: #fdf2f8; width: 70px; height: 70px; line-height: 70px; border-radius: 50%; }
+        .profile-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 12px 20px rgba(0,0,0,0.08); }
+        
+        .card-pria { border-bottom: 4px solid #3b82f6; background: #f0f9ff; }
+        .card-wanita { border-bottom: 4px solid #ec4899; background: #fff1f2; }
+
+        .profile-emoji { font-size: 2.5rem; margin-bottom: 0.5rem; display: inline-block; width: 70px; height: 70px; line-height: 70px; border-radius: 50%; background: #ffffff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
         .profile-name { font-weight: 700; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.2rem; }
         .profile-role { font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 12px; display: inline-block; margin-bottom: 0.5rem; }
         .role-pria { background: #e0f2fe; color: #0369a1; }
@@ -97,8 +102,8 @@
         .checklist-card ul { list-style: none; padding: 0; }
         .checklist-card li { position: relative; padding-left: 1.8rem; margin-bottom: 0.8rem; color: #334155; font-size: 0.95rem; }
         .checklist-card li::before { content: '✅'; position: absolute; left: 0; top: 0; font-size: 1rem; }
-        #kegiatan .checklist-card li::before { content: '📌'; }
-        .checklist-card a { color: #059669; font-weight: 600; text-decoration: none; }
+        #kegiatan .checklist-card li::before { content: '📅'; }
+        .checklist-card a { color: #059669; font-weight: 600; text-decoration: underline; }
 
         .timeline { position: relative; padding-left: 1.5rem; }
         .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px; }
@@ -126,7 +131,6 @@
         .badge-dist { background: #e0e7ff; color: #4338ca; } 
         .badge-time { background: #ffedd5; color: #c2410c; } 
         .badge-gas { background: #fee2e2; color: var(--danger); }
-        .badge-lansia { background: #fce7f3; color: #be185d; }
 
         .toilet-stop-box {
             background-color: var(--toilet-bg);
@@ -184,14 +188,14 @@
 <body>
 
     <header>
-        <h1>🌴 Rencana Roadtrip Keluarga</h1>
-        <p>Jogja - Bali • Toyota Veloz • 10 - 16 Juni 2026</p>
+        <h1>🌴 Healing di Bali</h1>
+        <p>Jogja - Bali PP • Toyota Veloz • 10 - 16 Juni 2026</p>
     </header>
 
     <div class="container">
         
         <div class="info-card">
-            <div class="info-item"><span class="info-icon">🗺️</span><span class="info-value">± 750 KM</span></div>
+            <div class="info-item"><span class="info-icon">🗺️</span><span class="info-value">Jogja - Bali PP</span></div>
             <div class="info-item"><span class="info-icon">⏱️</span><span class="info-value">± 20 Jam Pergi</span></div>
             <div class="info-item"><span class="info-icon">👥</span><span class="info-value">1 Keluarga Besar</span></div>
             <div class="info-item"><span class="info-icon">🏡</span><span class="info-value">Sanur, Bali</span></div>
@@ -207,85 +211,83 @@
 
         <div id="persiapan" class="tab-content active">
             <div class="checklist-card">
-                <h3>🛠️ 1. Cek Bengkel (H-7 Sebelum Berangkat)</h3>
+                <h3>🛠️ 1. Cek Fisik Kendaraan Lengkap & Bengkel (H-7 Berangkat)</h3>
                 <ul>
-                    <li><strong>Sistem Pengereman:</strong> Kampas rem depan-belakang harus tebal untuk jalur turunan tajam Bali & tol panjang.</li>
-                    <li><strong>Fluida Mesin:</strong> Cek oli mesin, level air radiator (coolant) dan minyak rem.</li>
-                    <li><strong>Spooring & Balancing:</strong> Setir harus lurus dan seimbang agar supir tidak cepat lelah menahan setir getar di tol.</li>
-                    <li><strong>Lampu & Kelistrikan:</strong> Headlamp, high-beam, lampu sein, lampu rem wajib prima untuk jalur Hutan Baluran dan Bali Barat yang minim penerangan.</li>
+                    <li><strong>Lampu Utama:</strong> Pastikan headlamp dekat, jauh, dan foglamp menyala terang benderang untuk rute malam/hutan.</li>
+                    <li><strong>Lampu Rem:</strong> Periksa lampu rem belakang kanan, kiri, dan lampu rem baris atas agar aman saat pengereman mendadak di tol.</li>
+                    <li><strong>Lampu Sein (Signal):</strong> Cek fungsi kedipan sein depan, belakang, spion, serta kelancaran tombol lampu hazard.</li>
+                    <li><strong>Tekanan Angin Ban:</strong> Isi tekanan ideal muatan penuh (Depan 36 PSI, Belakang 38-39 PSI). Pastikan angin ban serep terisi.</li>
+                    <li><strong>Wiper & Air Wiper:</strong> Ganti karet wiper jika sudah kesat dan isi tangki air wiper dengan campuran cairan pembersih kaca.</li>
+                    <li><strong>Fluida Mesin Utama:</strong> Periksa volume oli mesin, minyak rem fungsional, oli kopling, serta cadangan cairan radiator coolant.</li>
+                    <li><strong>Sistem Rem & Kaki-kaki:</strong> Cek ketebalan kampas rem serta lakukan spooring-balancing agar setir stabil konstan.</li>
+                    <li><strong>Aki & Kelistrikan:</strong> Pastikan tegangan aki normal untuk menghindari mogok kelistrikan di area luar kota.</li>
                 </ul>
             </div>
 
             <div class="checklist-card">
-                <h3>🚗 2. Cek Sederhana (H-1 Keberangkatan)</h3>
+                <h3>🎒 2. Pertimbangan Penting Operasional Perjalanan Jauh</h3>
                 <ul>
-                    <li><strong>Tekanan Angin Ban:</strong> Karena beban penuh kabin (6 orang + barang bagasi), isi tekanan ban <strong>Depan 36 PSI</strong> dan <strong>Belakang 38-39 PSI</strong>. Cek juga ban serep.</li>
-                    <li><strong>Air Wiper:</strong> Isi penuh tabung air wiper dengan campuran pembersih kaca anti serangga.</li>
-                </ul>
-            </div>
-
-            <div class="checklist-card">
-                <h3>💳 3. Manajemen E-Money & Uang Tunai</h3>
-                <ul>
-                    <li><strong>E-Toll Berangkat:</strong> Siapkan saldo kartu utama sebesar <strong>Rp 600.000</strong> untuk tol Jogja s.d Probolinggo Timur (Estimasi habis ± Rp 550.000).</li>
-                    <li><strong>E-Toll Cadangan:</strong> Pegang 1 kartu backup berisi saldo <strong>Rp 200.000</strong> sebagai langkah darurat jika kartu utama eror.</li>
-                    <li><strong>Uang Tunai Receh bersama:</strong> Siapkan pecahan Rp 1.000 dan Rp 2.000 sebanyak total ± Rp 300.000 untuk parkir, toilet umum Pantura, dan penyeberangan jalan.</li>
+                    <li><strong>Manajemen Kartu E-Toll:</strong> Siapkan minimal 2 kartu E-Toll terisi penuh masing-masing sebesar <strong>Rp 700.000</strong> guna menghindari kendala kemacetan di pintu gerbang tol utama.</li>
+                    <li><strong>Ritme Istirahat Lansia:</strong> Agendakan masuk rest area secara berkala setiap 2 atau 3 jam untuk peregangan otot kaki lansia.</li>
+                    <li><strong>Kotak P3K & Obat Mandiri:</strong> Simpan obat perjalanan universal serta persediaan obat khusus Uti di area laci dashboard depan.</li>
+                    <li><strong>Logistik & Uang Receh:</strong> Sediakan persediaan air mineral botolan di kabin dan siapkan uang pecahan kecil untuk parkir/retribusi toilet arteri.</li>
+                    <li><strong>Lokasi Akomodasi:</strong> <a href="https://maps.google.com/?q=Garuda+Homestay+Sanur" target="_blank">📍 Navigasi Peta Garuda Homestay Sanur</a> (Terletak di area Sanur, Denpasar Selatan).</li>
                 </ul>
             </div>
         </div>
 
         <div id="rombongan" class="tab-content">
             <div class="profile-grid">
-                <div class="profile-card">
+                <div class="profile-card card-pria">
                     <span class="profile-emoji">👨🏻</span>
                     <div class="profile-name">Truna Punggau</div>
                     <div class="profile-role role-pria">Pria</div>
-                    <div class="profile-stay">PP di Mobil &<br>Inap 5 Malam</div>
+                    <div class="profile-stay">PP di Mobil &<br>Inap 6 Malam</div>
                 </div>
-                <div class="profile-card">
+                <div class="profile-card card-wanita">
                     <span class="profile-emoji">👩🏻</span>
                     <div class="profile-name">Yonna Punggau</div>
                     <div class="profile-role role-wanita">Wanita</div>
-                    <div class="profile-stay">PP di Mobil &<br>Inap 5 Malam</div>
+                    <div class="profile-stay">PP di Mobil &<br>Inap 6 Malam</div>
                 </div>
-                <div class="profile-card">
+                <div class="profile-card card-wanita">
                     <span class="profile-emoji">👩🏻</span>
                     <div class="profile-name">Yuliana Setiyarini</div>
                     <div class="profile-role role-wanita">Wanita</div>
-                    <div class="profile-stay">PP di Mobil &<br>Inap 5 Malam</div>
+                    <div class="profile-stay">PP di Mobil &<br>Inap 6 Malam</div>
                 </div>
-                <div class="profile-card">
-                    <span class="profile-emoji">👵🏼</span>
+                <div class="profile-card card-wanita">
+                    <span class="profile-emoji">👩🏻</span>
                     <div class="profile-name">Uti Suwarti</div>
                     <div class="profile-role role-wanita">Wanita (Lansia)</div>
-                    <div class="profile-stay">PP di Mobil &<br>Inap 5 Malam</div>
+                    <div class="profile-stay">PP di Mobil &<br>Inap 6 Malam</div>
                 </div>
-                <div class="profile-card">
+                <div class="profile-card card-pria">
                     <span class="profile-emoji">👨🏻</span>
                     <div class="profile-name">Ferdinal</div>
-                    <div class="profile-role role-pria">Pria (Lansia)</div>
-                    <div class="profile-stay">Pergi Saja di Mobil &<br>Inap 5 Malam</div>
+                    <div class="profile-role role-pria">Pria</div>
+                    <div class="profile-stay">Pergi Saja di Mobil &<br>Inap 6 Malam</div>
                 </div>
-                <div class="profile-card">
+                <div class="profile-card card-wanita">
                     <span class="profile-emoji">👩🏻</span>
                     <div class="profile-name">Rina</div>
-                    <div class="profile-role role-wanita">Wanita (Lansia)</div>
-                    <div class="profile-stay">Pergi Saja di Mobil &<br>Inap 5 Malam</div>
+                    <div class="profile-role role-wanita">Wanita</div>
+                    <div class="profile-stay">Pergi Saja di Mobil &<br>Inap 6 Malam</div>
                 </div>
-                <div class="profile-card">
-                    <span class="profile-emoji">👨‍🦲</span>
+                <div class="profile-card card-pria">
+                    <span class="profile-emoji">👨🏻</span>
                     <div class="profile-name">Jones Silitonga</div>
                     <div class="profile-role role-pria">Pria</div>
-                    <div class="profile-stay">Bertemu di Bali &<br>Inap 5 Malam</div>
+                    <div class="profile-stay">Bertemu di Bali &<br>Inap 6 Malam</div>
                 </div>
-                <div class="profile-card">
-                    <span class="profile-emoji">👩🏽‍🦱</span>
+                <div class="profile-card card-wanita">
+                    <span class="profile-emoji">👩🏻</span>
                     <div class="profile-name">Yemima Silitonga</div>
                     <div class="profile-role role-wanita">Wanita</div>
-                    <div class="profile-stay">Bertemu di Bali &<br>Inap 5 Malam</div>
+                    <div class="profile-stay">Bertemu di Bali &<br>Inap 6 Malam</div>
                 </div>
-                <div class="profile-card">
-                    <span class="profile-emoji">👧🏻</span>
+                <div class="profile-card card-wanita">
+                    <span class="profile-emoji">👩🏻</span>
                     <div class="profile-name">Yuyun</div>
                     <div class="profile-role role-wanita">Wanita</div>
                     <div class="profile-stay">Pulang Saja di Mobil &<br>Inap 3 Malam</div>
@@ -293,49 +295,46 @@
             </div>
 
             <div class="total-box" style="margin-top: 0;">
-                <h3>Rincian Pengeluaran Per Orang (Adil & Transparan)</h3>
+                <h3>Rincian Pengeluaran Per Orang</h3>
                 <div class="cost-breakdown" style="background: none; border: none; margin: 0; padding: 0;">
                     
                     <div class="split-card">
-                        <span>1. Truna, Yonna, Yuliana (Masing-masing Bayar):</span>
-                        <div class="amount-person">Rp 2.920.500 per orang</div>
+                        <span>1. Truna, Yonna, Yuliana, Uti (Masing-masing Bayar Full Trip):</span>
+                        <div class="amount-person">Rp 3.192.000 per orang</div>
                         <ul>
-                            <li>Patungan Homestay (5 Malam): Rp 640.000</li>
-                            <li>Patungan Jalan Pergi (Bagi 6): Rp 402.500</li>
-                            <li>Patungan Jalan Pulang (Bagi 5): Rp 473.000</li>
-                            <li>Patungan Kas Bali & Konsumsi 1 Minggu (Bagi 9): Rp 1.405.000</li>
+                            <li>Patungan Homestay (6 Malam): Rp 800.000</li>
+                            <li>Patungan Jalan Pergi (Bagi 6): Rp 542.000</li>
+                            <li>Patungan Jalan Pulang (Bagi 5): Rp 650.000</li>
+                            <li>Patungan Kas Bali & Konsumsi (Ikut Penuh): Rp 1.200.000</li>
                         </ul>
                     </div>
 
                     <div class="split-card">
-                        <span>2. Uti Suwarti (Lansia - Full Trip):</span>
-                        <div class="amount-person">Rp 2.920.500</div>
+                        <span>2. Ferdinal & Rina (Hanya Ikut Pergi):</span>
+                        <div class="amount-person">Rp 2.542.000 per orang</div>
                         <ul>
-                            <li>Homestay: Rp 640.000 | Pergi: Rp 402.500 | Pulang: Rp 473.000 | Kas Bali & Konsumsi: Rp 1.405.000</li>
+                            <li>Patungan Homestay (6 Malam): Rp 800.000</li>
+                            <li>Patungan Jalan Pergi (Bagi 6): Rp 542.000</li>
+                            <li>Patungan Kas Bali & Konsumsi (Ikut Penuh): Rp 1.200.000</li>
                         </ul>
                     </div>
 
                     <div class="split-card">
-                        <span>3. Ferdinal & Rina (Hanya Ikut Pergi):</span>
-                        <div class="amount-person">Rp 2.447.500 per orang</div>
+                        <span>3. Jones & Yemima Silitonga (Bertemu Langsung di Bali):</span>
+                        <div class="amount-person">Rp 2.000.000 per orang</div>
                         <ul>
-                            <li>Homestay (5 Malam): Rp 640.000 | Pergi: Rp 402.500 | Kas Bali & Konsumsi: Rp 1.405.000</li>
-                        </ul>
-                    </div>
-
-                    <div class="split-card">
-                        <span>4. Jones Silitonga & Yemima Silitonga (Bertemu di Bali):</span>
-                        <div class="amount-person">Rp 2.045.000 per orang</div>
-                        <ul>
-                            <li>Homestay (5 Malam): Rp 640.000 | Kas Bali & Konsumsi: Rp 1.405.000</li>
+                            <li>Patungan Homestay (6 Malam): Rp 800.000</li>
+                            <li>Patungan Kas Bali & Konsumsi (Ikut Penuh): Rp 1.200.000</li>
                         </ul>
                     </div>
 
                     <div class="split-card" style="border-color: #f472b6;">
-                        <span style="color: #fbcfe8;">5. Yuyun (Masuk Sabtu & Ikut Pulang):</span>
-                        <div class="amount-person" style="color: #34d399;">Rp 2.262.000</div>
+                        <span style="color: #fbcfe8;">4. Yuyun (Masuk Sabtu Tengah Trip & Ikut Pulang):</span>
+                        <div class="amount-person" style="color: #34d399;">Rp 1.800.000</div>
                         <ul>
-                            <li>Homestay (3 Malam): Rp 384.000 | Pulang: Rp 473.000 | Kas Bali & Konsumsi: Rp 1.405.000</li>
+                            <li>Patungan Homestay Sesuai Inap (3 Malam): Rp 400.000</li>
+                            <li>Patungan Jalan Pulang (Bagi 5): Rp 650.000</li>
+                            <li>Patungan Kas Bali & Konsumsi (Mulai Sabtu): Rp 750.000</li>
                         </ul>
                     </div>
 
@@ -345,8 +344,7 @@
 
         <div id="berangkat" class="tab-content">
             <div class="alert-benchmark">
-                <strong>🚙 LINI WAKTU RAMAH LANSIA (BERANGKAT):</strong><br>
-                Rabu, 10 Juni 2026 • Penumpang Kabin: 6 Orang (Truna, Yonna, Yuliana, Uti, Ferdinal, Rina) Estimasi total durasi perjalanan dibuat longgar (20 Jam) agar kondisi fisik lansia di dalam mobil terjaga manusiawi.
+                Rabu, 10 Juni 2026 • Penumpang Kabin: 6 Orang (Truna, Yonna, Yuliana, Uti, Ferdinal, Rina). Estimasi durasi perjalanan 15-20 jam.
             </div>
 
             <div class="timeline">
@@ -359,15 +357,15 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><span class="highlight">04:00 WIB:</span> Keberangkatan awal dari Jogja menuju Gerbang Tol Colomadu.</p>
+                        <p><span class="highlight">04:00 WIB:</span> Keberangkatan awal dari Jogja menuju Gerbang Tol Colomadu. <strong>Perjalanan dimulai oleh Supir 1.</strong></p>
                         
                         <div class="toilet-stop-box">
-                            <strong>🚽 PEMBERHENTIAN TOILET 1 (10 - 20 Menit)</strong>
-                            <span class="highlight">05:30 - 05:50 WIB:</span> Berhenti darurat di SPBU fungsional Tol Trans Jawa KM 492 / KM 511 agar para lansia bisa buang air kecil di subuh hari.
+                            <strong> SPBU TOL KM 492 / KM 511</strong>
+                            <span class="highlight">05:30 - 05:50 WIB:</span> Berhenti fungsional di jalur tol agar para lansia bisa buang air kecil subuh hari.
                         </div>
 
                         <p><span class="highlight">06:45 WIB:</span> Memasuki area Solo-Ngawi.</p>
-                        <p><span class="highlight">06:45 - 07:30 WIB (Istirahat Utama - 45 Menit):</span> Berhenti penuh di Rest Area KM 519 A. Sarapan pagi, peregangan otot pinggang lansia, dan ke toilet utama. <strong>Ganti ke Supir 1.</strong></p>
+                        <p><span class="highlight">06:45 - 07:30 WIB (Istirahat Utama):</span> Berhenti penuh di Rest Area KM 519 A. Sarapan pagi keluarga, peregangan fisik, dan ke toilet utama. <strong>Ganti posisi ke Supir 2.</strong></p>
                     </div>
                 </div>
 
@@ -381,22 +379,16 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><span class="highlight">07:30 WIB:</span> Supir 1 mulai melaju konstan stabil maksimal 100 km/jam di tol.</p>
+                        <p><span class="highlight">07:30 WIB:</span> Supir 2 mulai melaju konstan stabil maksimal 100 km/jam di lajur tol Trans Jawa.</p>
                         
                         <div class="toilet-stop-box">
-                            <strong>🚽 PEMBERHENTIAN TOILET 2 (10 - 20 Menit)</strong>
-                            <span class="highlight">09:15 - 09:35 WIB:</span> Istirahat khusus toilet lansia di Rest Area KM 695 A (Jombang). Fisik tidak boleh dipaksa terus di dalam mobil.
+                            <strong> REST AREA KM 695 A (Jombang)</strong>
+                            <span class="highlight">09:15 - 09:35 WIB:</span> Rehat toilet khusus lansia secara berkala.
                         </div>
 
                         <p><span class="highlight">10:15 WIB:</span> Tiba di gerbang batas Surabaya-Mojokerto.</p>
-                        <p><span class="highlight">10:15 - 11:30 WIB (Istirahat Panjang - 1 Jam 15 Menit):</span> Berhenti di Rest Area KM 725 A. Makan siang besar bersama, ibadah kumpul keluarga. <strong>Ganti ke Supir 2.</strong></p>
-                        <p><span class="highlight">BBM KELUARGA:</span> Indikator sisa 35%. Tanki diisi <strong>Full Tank</strong> Pertamax/Pertalite di SPBU rest area.</p>
-                        <div class="etape-cost">
-                            <ul>
-                                <li>Pengisian BBM Full Tank: ± Rp 300.000</li>
-                                <li>Makan Siang Bersama (6 Orang): ± Rp 300.000</li>
-                            </ul>
-                        </div>
+                        <p><span class="highlight">10:15 - 11:30 WIB (Istirahat Panjang):</span> Berhenti di Rest Area KM 725 A. Makan siang bersama dan ibadah berkumpul. <strong>Ganti posisi kembali ke Supir 1.</strong></p>
+                        <p><span class="highlight">BBM:</span> Rp 352.000 (Angka markup aman: <strong>Rp 450.000</strong> untuk pengisian penuh tangki di SPBU Rest Area).</p>
                     </div>
                 </div>
 
@@ -410,23 +402,16 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><span class="highlight">11:30 WIB:</span> Keluar Tol Probolinggo Timur. Kecepatan melambat drastis (40-60 km/jam) mengikuti arus truk jalan nasional Pantura.</p>
+                        <p><span class="highlight">11:30 WIB:</span> Keluar Tol Probolinggo Timur melambat mengikuti arus utama kendaraan nasional arteri Pantura dikemudikan oleh Supir 1.</p>
                         
                         <div class="toilet-stop-box">
-                            <strong>🚽 PEMBERHENTIAN TOILET 3 (10 - 20 Menit)</strong>
-                            <span class="highlight">13:15 - 13:35 WIB:</span> Berhenti di SPBU Utama Jalur Arteri Besuki / Paiton. Akses toilet lansia dibersihkan, kaki diluruskan di luar mobil.
+                            <strong> SPBU UTAMA BESUKI / PAITON</strong>
+                            <span class="highlight">13:15 - 13:35 WIB:</span> Rehat toilet dan merenggangkan kaki di luar area kabin mobil.
                         </div>
 
-                        <p><span class="highlight">15:15 WIB:</span> Memasuki area Kota Situbondo.</p>
-                        <p><span class="highlight">15:15 - 16:00 WIB (Istirahat Sore - 45 Menit):</span> Berhenti di SPBU Utama Kota Situbondo. Seluruh keluarga turun untuk minum/ngopi sore dan toilet akhir. <strong>Ganti ke Supir 3</strong> (Supir handal fokus jalan gelap kelok).</p>
-                        <p><span class="highlight">BBM SEBELUM HUTAN:</span> Tanki wajib diisi <strong>Full Tank</strong> lagi di sini agar aman menembus kawasan hutan.</p>
-                        <div class="etape-cost">
-                            <ul>
-                                <li>Tarif Tol Utama (Jogja - Probolinggo): Rp 550.000</li>
-                                <li>Isi BBM Top-up: ± Rp 200.000</li>
-                                <li>Cemilan & Logistik Air Mineral Keluarga: ± Rp 150.000</li>
-                            </ul>
-                        </div>
+                        <p><span class="highlight">15:15 WIB:</span> Memasuki batas Kota Situbondo.</p>
+                        <p><span class="highlight">15:15 - 16:00 WIB (Istirahat Sore):</span> Rehat di SPBU Kota Situbondo untuk toilet akhir sebelum jalur hutan. <strong>Ganti posisi ke Supir 2.</strong></p>
+                        <p><span class="highlight">BBM SEBELUM HUTAN:</span> Tangki kendaraan diisi penuh kembali di SPBU kota agar aman melintasi area Baluran.</p>
                     </div>
                 </div>
 
@@ -439,16 +424,10 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><span class="highlight">16:00 - 17:30 WIB:</span> Melintasi area Hutan Baluran dengan kecepatan konstan rendah yang aman.</p>
-                        <p><span class="highlight-ferizy">⚠️ INFO ORDER TIKET FERIZY:</span> Buka aplikasi Ferizy sesaat setelah keluar dari kota Situbondo. Pesan online tiket untuk jadwal sandar kapal jam 18:00 WIB.</p>
-                        <p><span class="highlight">17:30 - 18:15 WIB:</span> Tiba di Pelabuhan Ketapang, antre masuk dek kapal ferry bunder.</p>
-                        <p><span class="highlight">18:15 - 20:15 WIB (Waktu Berlayar):</span> Proses penyeberangan laut selama 2 jam penuh. Mesin mati, seluruh keluarga pindah istirahat di ruang ber-AC (dek VIP) kapal. Makan malam santai.</p>
-                        <div class="etape-cost">
-                            <ul>
-                                <li>Tiket Kapal Feri ASDP (Mobil + Orang): Rp 215.000</li>
-                                <li>Makan Malam di Kapal (6 Orang): ± Rp 300.000</li>
-                            </ul>
-                        </div>
+                        <p><span class="highlight">16:00 - 17:30 WIB:</span> Melintasi kawasan Hutan Baluran dengan laju aman oleh Supir 2.</p>
+                        <p><span class="highlight-ferizy">⚠️ INFO ORDER TIKET FERIZY:</span> Akses aplikasi Ferizy sesaat setelah melewati kota Situbondo guna memesan tiket jadwal penyeberangan kapal pukul 18:00 WIB.</p>
+                        <p><span class="highlight">17:30 - 18:15 WIB:</span> Tiba di Pelabuhan Ketapang, memasuki barisan antrean dek kapal ferry.</p>
+                        <p><span class="highlight">18:15 - 20:15 WIB (Waktu Berlayar):</span> Penyeberangan laut kapal feri. Rombongan naik menuju ruang dek penumpang utama untuk istirahat serta makan malam tenang.</p>
                     </div>
                 </div>
 
@@ -457,19 +436,25 @@
                         <div class="etape-title">🌴 ETAPE 5: Jalur Negara Bali Barat Menuju Garuda Homestay Sanur</div>
                         <div class="badges">
                             <span class="badge badge-dist">± 130 km</span>
-                            <span class="badge badge-time">Durasi: 3 Jam 45 Menit</span>
+                            <span class="badge badge-time">Durasi: 3 Jam 30 Menit</span>
                         </div>
                     </div>
                     <div class="details">
-                        <p><em>*Zona waktu resmi bergeser maju 1 jam ke Waktu Indonesia Tengah (WITA)*</em></p>
-                        <p><span class="highlight">21:15 WITA:</span> Keluar pelabuhan Gilimanuk, lolos pemeriksaan KTP Bali. <strong>Ganti ke Supir 4</strong> (supir paling segar malam hari).</p>
+                        <p><em>*Zona waktu otomatis beralih maju 1 jam ke Waktu Indonesia Tengah (WITA)*</em></p>
+                        <p><span class="highlight">21:15 WITA:</span> Keluar pelabuhan Gilimanuk dan melewati pos pemeriksaan KTP. <strong>Ganti posisi kembali ke Supir 1.</strong></p>
                         
                         <div class="toilet-stop-box">
-                            <strong>🚽 PEMBERHENTIAN TOILET 4 (10 - 20 Menit)</strong>
-                            <span class="highlight">23:00 - 23:20 WITA:</span> Istirahat toilet malam di SPBU modern area Tabanan. Sangat penting bagi lansia sebelum memasuki hiruk pikuk kota.
+                            <strong> SPBU MODERN AREA TABANAN</strong>
+                            <span class="highlight">23:00 - 23:20 WITA:</span> Istirahat toilet malam hari penutup sebelum masuk perkotaan.
                         </div>
 
-                        <p><span class="highlight">01:00 WITA (Kamis Dini Hari):</span> Tiba dengan selamat, manusiawi, tanpa kelelahan ekstrem di <strong>Garuda Homestay Sanur, Denpasar Selatan</strong>.</p>
+                        <p><span class="highlight">01:00 WITA (Kamis Dini Hari):</span> Tiba di lokasi utama <a href="https://maps.google.com/?q=Garuda+Homestay+Sanur" target="_blank">Garuda Homestay Sanur, Denpasar Selatan</a>.</p>
+                        
+                        <div class="alert-benchmark" style="margin-top: 1rem; border-left-color: var(--color-persiapan); background: #f5f3ff; color: #4c1d95;">
+                            <strong>💡 IDE TRANSIT ISTIRAHAT DINI HARI:</strong><br>
+                            Sangat disarankan melakukan pemesanan kamar homestay sejak <strong>hari Rabu (H-1)</strong>, sehingga saat tiba jam 01:00 dini hari, rombongan keluarga dan lansia bisa langsung masuk kamar untuk istirahat tidur pulas tanpa menunggu waktu check-in siang.<br>
+                            <em>(Opsi alternatif: Berhenti transit dan meluruskan badan di rest area SPBU besar Bypass Ngurah Rai atau gerai kuliner 24 jam di sekitaran Sanur).</em>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -477,73 +462,91 @@
             <div class="total-box">
                 <h3>Estimasi Biaya Jalan (Berangkat)</h3>
                 <div class="cost-breakdown">
-                    <div class="cost-item"><span>Gauge BBM (Total Pengisian s.d Bali)</span><span>Rp 500.000</span></div>
-                    <div class="cost-item"><span>Tarif Tol Trans Jawa</span><span>Rp 550.000</span></div>
-                    <div class="cost-item"><span>Tiket Penyeberangan ASDP Ferizy</span><span>Rp 215.000</span></div>
-                    <div class="cost-item"><span>Anggaran Makan & Logistik Rombongan</span><span>Rp 750.000</span></div>
-                    <div class="cost-item"><span>Kas Tunai Darurat (Toilet & Parkir)</span><span>Rp 400.000</span></div>
+                    <div class="cost-item"><span>Estimasi Total BBM Perjalanan (Arah Timur)</span><span>Rp 1.000.000</span></div>
+                    <div class="cost-item"><span>Tarif Pengisian Saldo Tol Trans Jawa (Saldo Utama)</span><span>Rp 700.000</span></div>
+                    <div class="cost-item"><span>Tiket Penyeberangan ASDP Kapal Ferizy</span><span>Rp 250.000</span></div>
+                    <div class="cost-item"><span>Alokasi Anggaran Makan Kolektif Perjalanan</span><span>Rp 850.000</span></div>
+                    <div class="cost-item"><span>Kas Tunai Dana Darurat Lapangan (Toilet, Parkir)</span><span>Rp 500.000</span></div>
                 </div>
-                <div class="amount-total">Total Berangkat: Rp 2.415.000</div>
+                <div class="amount-total">Total Berangkat: Rp 3.300.000</div>
                 <div class="split-card">
-                    <span>Patungan (Dividi 6 Orang Pergi):</span>
-                    <div class="amount-person">Rp 402.500 / Orang</div>
+                    <span>Skema Patungan Bersama (Dibagi 6 Orang Pergi):</span>
+                    <div class="amount-person">Rp 550.000 / Orang</div>
                 </div>
             </div>
         </div>
 
         <div id="kegiatan" class="tab-content">
             <div class="checklist-card">
-                <h3>⛪ 1. Jadwal Acara Pernikahan (Senin, 15 Juni 2026)</h3>
-                <ul>
-                    <li><strong>14:00 WITA — Khotbah Pernikahan:</strong> Balai Kerajaan Saksi-Saksi Yehuwa (<a href="https://maps.app.goo.gl/MM4JBofoyHf1xSxE8" target="_blank">Navigasi Peta Lokasi 0</a>). Seluruh anggota keluarga berpakaian rapi siap di mobil jam 13:00 WITA.</li>
-                    <li><strong>17:00 WITA — Resepsi Pernikahan:</strong> Renoma Garden (<a href="https://maps.app.goo.gl/uvbEWh24zn1azaSm9" target="_blank">Navigasi Peta Lokasi 1</a>).</li>
-                </ul>
-            </div>
+                <h3>⛪ Rangkaian Kegiatan Harian</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #64748b;">Mobil Utama Lintasan Lintas Provinsi PP: <strong>Toyota Veloz</strong>.<br>Armada Mobil Operasional Selama di Bali: <strong>Toyota Veloz & Toyota Rush</strong>.</p>
+                <p style="font-size: 0.9rem; margin-bottom: 1.5rem;"><a href="https://maps.google.com/?q=Garuda+Homestay+Sanur" target="_blank">📍 Klik untuk Google Maps Lokasi Akomodasi (Sanur)</a></p>
+                
+                <div class="timeline" style="margin-left: 0.5rem;">
+                    <div class="etape-card" style="border-left-color: var(--color-kegiatan); padding: 1.2rem;">
+                        <span class="badge badge-dist" style="background: #e6f4ea; color: #137333; margin-bottom: 0.5rem; display: inline-block;">Kamis, 11 Juni 2026</span>
+                        <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">Pemulihan Fisik & Santai Pesisir Pantai</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); mt-1">Pagi hingga siang digunakan istirahat total memulihkan tenaga pasca perjalanan jauh. Sore hari jam 16:00 WITA, berjalan kaki santai menikmati suasana sore di kawasan Pantai Sanur dekat akomodasi.</p>
+                    </div>
 
-            <div class="checklist-card" style="border-left-color: #ec4899;">
-                <h3 style="color: #be185d;">👗 2. Rincian Seragam Pernikahan Keluarga</h3>
-                <ul>
-                    <li><strong>Kain Batik:</strong> Rp 80.000 / orang (ukuran 2 meter, harga berlaku sama untuk laki-laki maupun perempuan).</li>
-                    <li><strong>Kain Cantili:</strong> Rp 150.000 / orang (khusus untuk anggota rombongan perempuan saja).</li>
-                    <li><strong>Subsidi Donatur:</strong> Uti Suwarti bertindak sebagai donatur dan menyumbang sebesar <strong>Rp 100.000 / orang</strong>.</li>
-                    <li><strong>Biaya Ongkos Jahit:</strong> Belum termasuk dalam hitungan di atas. Proses jahit diserahkan ke Bude Rina, besaran biaya tiap orang berbeda-beda dan bisa langsung ditanyakan secara pribadi ke Bude Rina.</li>
-                </ul>
-            </div>
+                    <div class="etape-card" style="border-left-color: var(--color-kegiatan); padding: 1.2rem;">
+                        <span class="badge badge-dist" style="background: #e6f4ea; color: #137333; margin-bottom: 0.5rem; display: inline-block;">Jumat, 12 Juni 2026</span>
+                        <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">Eksplorasi Bali Selatan Ramah Lansia</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); mt-1">Perjalanan menuju Pantai Melasti yang memiliki akses jalan aspal mulus bebas tangga terjal. Malam harinya dilanjutkan dengan agenda makan malam hidangan kuliner ikan bakar di tepi Pantai Jimbaran.</p>
+                    </div>
 
-            <div class="checklist-card">
-                <h3>🏖️ 3. Jadwal Wisata Harian Ramah Lansia (Kamis - Selasa)</h3>
-                <ul>
-                    <li><strong>Kamis, 11 Juni:</strong> Istirahat total di pagi hari pasca perjalanan panjang. Sore hari jam 16:00 WITA, bersantai jalan kaki santai menikmati hembusan angin di Pantai Sanur (sangat dekat dari lokasi homestay).</li>
-                    <li><strong>Jumat, 12 Juni:</strong> Trip santai ke Pantai Melasti (akses jalanan aspal mobil sangat mulus tanpa tangga curam, sangat ramah bagi lansia), dilanjutkan dengan makan malam hidangan ikan bakar lezat langsung di tepi Pantai Jimbaran.</li>
-                    <li><strong>Sabtu, 13 Juni:</strong> Menjemput kedatangan Yuyun. Formasi lengkap 9 orang melakukan perjalanan ke area dingin menyejukkan di <strong>Bedugul, Tabanan</strong>. Menikmati keindahan Pura Ulun Danu Beratan dan berjalan santai di Kebun Raya Bedugul (disarankan membawa jaket tebal karena udara pegunungan dingin).</li>
-                    <li><strong>Minggu, 14 Juni:</strong> Belanja oleh-oleh dan suvenir keluarga di Krisna Oleh-Oleh Bali Bypass yang kawasannya luas, nyaman, aman, serta dilengkapi AC dingin. Malam harinya bersama-sama menata koper masuk ke dalam bagasi Toyota Veloz.</li>
-                    <li><strong>Senin, 15 Juni:</strong> Menghadiri rangkaian acara inti khotbah serta resepsi pernikahan keluarga dari siang hingga malam hari sesuai jadwal resmi.</li>
-                    <li><strong>Selasa, 16 Juni:</strong> Check-out dini hari pukul 03:00 WITA untuk memulai perjalanan darat pulang kembali menuju Yogyakarta.</li>
-                </ul>
+                    <div class="etape-card" style="border-left-color: var(--color-kegiatan); padding: 1.2rem;">
+                        <span class="badge badge-dist" style="background: #e6f4ea; color: #137333; margin-bottom: 0.5rem; display: inline-block;">Sabtu, 13 Juni 2026</span>
+                        <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">Penjemputan Yuyun & Wisata Alam Sejuk Bedugul</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); mt-1">Menjemput kedatangan Yuyun untuk melengkapi formasi. Rombongan penuh bergerak menuju kawasan pegunungan Bedugul (Tabanan) memakai dua unit mobil (Veloz & Rush). Mengunjungi keindahan tepi danau Pura Ulun Danu Beratan.</p>
+                    </div>
+
+                    <div class="etape-card" style="border-left-color: var(--color-kegiatan); padding: 1.2rem;">
+                        <span class="badge badge-dist" style="background: #e6f4ea; color: #137333; margin-bottom: 0.5rem; display: inline-block;">Minggu, 14 Juni 2026</span>
+                        <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">Belanja Suvenir & Tata Bagasi Kendaraan</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); mt-1">Berbelanja oleh-oleh di pusat suvenir ber-AC Krisna Oleh-Oleh Bali Bypass yang lapang. Malam harinya difokuskan penyusunan koper bawaan ke dalam ruang bagasi Toyota Veloz.</p>
+                    </div>
+
+                    <div class="etape-card" style="border-left-color: var(--danger); border-left-width: 6px; padding: 1.5rem; background: #fff5f5;">
+                        <span class="badge badge-gas" style="margin-bottom: 0.5rem; display: inline-block; font-weight: 700;">⚡ Senin, 15 Juni 2026 [ACARA INTI]</span>
+                        <p style="font-size: 1.05rem; font-weight: 700; color: #991b1b;">Rangkaian Agenda Khotbah & Resepsi Pernikahan</p>
+                        <p style="font-size: 0.85rem; color: #7f1d1d; margin-top: 0.5rem; line-height: 1.5;">
+                            • 14:00 WITA: Menghadiri Khotbah Pernikahan di <a href="https://maps.google.com/?q=Balai+Kerajaan+Saksi-Saksi+Yehuwa+Bali" target="_blank">Balai Kerajaan Saksi-Saksi Yehuwa</a>. Seluruh keluarga siap di dalam mobil pada pukul 13:00 WITA.<br>
+                            • 17:00 WITA: Mengikuti acara Resepsi Pernikahan resmi keluarga bertempat di <a href="https://maps.google.com/?q=Renoma+Garden+Bali" target="_blank">Renoma Garden</a>. Mobilitas lokal didukung penuh secara konvensional oleh unit Veloz dan Rush.
+                        </p>
+                    </div>
+
+                    <div class="etape-card" style="border-left-color: var(--color-kegiatan); padding: 1.2rem;">
+                        <span class="badge badge-dist" style="background: #e6f4ea; color: #137333; margin-bottom: 0.5rem; display: inline-block;">Selasa, 16 Juni 2026</span>
+                        <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">Check-out & Perjalanan Pulang DIY</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); mt-1">Pukul 03:00 WITA dini hari rombongan melakukan check-out resmi dari penginapan untuk menempuh perjalanan darat kembali pulang menuju Yogyakarta.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="total-box">
-                <h3>Estimasi Anggaran Kas Bali (Operasional &amp; Konsumsi 1 Minggu)</h3>
+                <h3>Estimasi Kas Bali (Operasional Bersama & Konsumsi)</h3>
                 <div class="cost-breakdown">
-                    <div class="cost-item"><span>🍽️ Konsumsi Rombongan (3x Sehari untuk 9 Orang — Rp 60.000/Makan)</span><span>Rp 11.340.000</span></div>
-                    <div class="cost-item"><span>⛽ BBM Operasional Seminggu (Jalur Macet Bali + AC ON Terus)</span><span>Rp 650.000</span></div>
-                    <div class="cost-item"><span>🎟️ Tiket Masuk Kunjungan Wisata Alam Bedugul (Tabanan)</span><span>Rp 450.000</span></div>
-                    <div class="cost-item"><span>🛣️ Tol Bali Mandara (Akses Bandara / Kawasan Selatan)</span><span>Rp 52.000</span></div>
-                    <div class="cost-item"><span>🅿️ Karcis Parkir Resmi &amp; Dana Tak Terduga Lapangan</span><span>Rp 150.000</span></div>
+                    <div class="cost-item"><span>🍽️ Alokasi Konsumsi Kuliner (Disesuaikan proporsi hari hadir)</span><span>Rp 7.500.000</span></div>
+                    <div class="cost-item"><span>⛽ Bahan Bakar Operasional Lokal (Dua Unit Kendaraan)</span><span>Rp 1.000.000</span></div>
+                    <div class="cost-item"><span>🎟️ Karcis Masuk Tempat Wisata Alam Bedugul</span><span>Rp 450.000</span></div>
+                    <div class="cost-item"><span>🛣️ Tarif Tol Laut Bali Mandara Operasional</span><span>Rp 100.000</span></div>
+                    <div class="cost-item"><span>🅿️ Retribusi Parkir Area & Cadangan Tak Terduga Kas</span><span>Rp 1.300.000</span></div>
                 </div>
-                <div class="amount-total">Total Kas Bali: Rp 12.642.000</div>
+                <div class="amount-total">Total Anggaran Kas Bali: Rp 10.350.000</div>
                 <div class="split-card" style="margin-bottom: 0;">
-                    <span>Patungan Kas Bali (Dibagi Rata 9 Orang):</span>
-                    <div class="amount-person">Rp 1.405.000 / Orang</div>
-                    <span style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.4rem; font-weight: normal; display: block;">*Catatan: Anggaran belanja oleh-oleh belum masuk dalam hitungan ini karena bersifat pengeluaran pribadi masing-masing.</span>
+                    <span>Pembagian Sesuai Kehadiran Fisik di Lapangan:</span>
+                    <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
+                        <li style="margin-bottom: 0.4rem;">• <strong>8 Anggota Hadir Awal:</strong> Masing-masing membayar sebesar <strong>Rp 1.200.000 / Orang</strong>.</li>
+                        <li>• <strong>Yuyun (Masuk Sabtu):</strong> Membayar proporsional sebesar <strong>Rp 750.000</strong>.</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
         <div id="pulang" class="tab-content">
             <div class="alert-benchmark">
-                <strong>🏡 LINI WAKTU RAMAH LANSIA (PULANG):</strong><br>
-                Selasa, 16 Juni 2026 • Penumpang Kabin: 5 Orang (Truna, Yonna, Yuliana, Uti, Yuyun). Ritme berkendara konstan dikawal stop toilet tiap 2 jam.
+                Selasa, 16 Juni 2026 • Penumpang Kabin Pulang: 5 Orang (Truna, Yonna, Yuliana, Uti, Yuyun). Ritme operasional berkendara konstan dikawal pemberhentian toilet rest area setiap 2 jam memakai mobil utama Toyota Veloz.
             </div>
 
             <div class="timeline">
@@ -556,14 +559,14 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><span class="highlight">03:00 WITA:</span> Check-out dini hari dari Garuda Homestay Sanur. Bensin dipastikan sudah diisi Full tank pada malam senin.</p>
+                        <p><span class="highlight">03:00 WITA:</span> Proses check-out dini hari dari akomodasi penginapan Sanur. Indikator bensin dipastikan sudah terisi penuh semenjak malam senin. <strong>Dikemudikan oleh Supir 1.</strong></p>
                         
                         <div class="toilet-stop-box">
-                            <strong>🚽 PEMBERHENTIAN TOILET 1 (10 - 20 Menit)</strong>
-                            <span class="highlight">04:30 - 04:50 WITA:</span> Berhenti darurat di SPBU Negara untuk toilet subuh lansia.
+                            <strong> SPBU ARTERI NEGARA</strong>
+                            <span class="highlight">04:30 - 04:50 WITA:</span> Berhenti darurat toilet subuh fungsional lansia.
                         </div>
 
-                        <p><span class="highlight">06:30 WITA:</span> Masuk area pelabuhan Gilimanuk dan antre kapal feri ASDP.</p>
+                        <p><span class="highlight">06:30 WITA:</span> Memasuki gerbang Pelabuhan Gilimanuk antre manifes kapal feri.</p>
                     </div>
                 </div>
 
@@ -575,8 +578,8 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><span class="highlight">06:30 - 09:00 WITA:</span> Berlayar dengan kapal feri. Rombongan naik ke dek AC, menikmati sarapan bekal roti. <strong>Ganti ke Supir 1.</strong></p>
-                        <p><em>*Waktu otomatis mundur 1 jam kembali ke WIB sesaat setelah kapal sandar di Ketapang (08:00 WIB).*</em></p>
+                        <p><span class="highlight">06:30 - 09:00 WITA:</span> Mobil memasuki kapal feri. Penumpang naik menuju dek atas ber-AC, menikmati perbekalan sarapan ringan. <strong>Ganti posisi ke Supir 2.</strong></p>
+                        <p><em>*Selisih penunjuk waktu otomatis mundur 1 jam kembali ke zona WIB pasca bersandar penuh di Pelabuhan Ketapang (08:00 WIB).*</em></p>
                     </div>
                 </div>
 
@@ -590,20 +593,14 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><span class="highlight">08:00 - 09:30 WIB:</span> Supir 1 melaju melintasi Wongsorejo & Hutan Baluran jalur aman.</p>
+                        <p><span class="highlight">08:00 - 09:30 WIB:</span> Laju konstan aman melintasi area Wongsorejo serta lingkar Hutan Baluran dipegang oleh Supir 2.</p>
                         
                         <div class="toilet-stop-box">
-                            <strong>🚽 PEMBERHENTIAN TOILET 2 (10 - 20 Menit)</strong>
-                            <span class="highlight">09:30 - 09:50 WIB:</span> Tiba di SPBU Utama Kota Situbondo. Rehat toilet lansia pasca jalur kelok hutan.
+                            <strong> SPBU UTAMA KOTA SITUBONDO</strong>
+                            <span class="highlight">09:30 - 09:50 WIB:</span> Rehat toilet penyejuk pasca rute kelokan kawasan hutan.
                         </div>
 
-                        <p><span class="highlight">09:50 - 10:45 WIB:</span> Melanjutkan jalan arteri Pantura, isi bensin hingga <strong>Full Tank</strong>.</p>
-                        <div class="etape-cost">
-                            <ul>
-                                <li>Isi BBM Top-up Full: ± Rp 200.000</li>
-                                <li>Tiket Kapal Feri Pulang: Rp 215.000</li>
-                            </ul>
-                        </div>
+                        <p><span class="highlight">09:50 - 10:45 WIB:</span> Melanjutkan lintasan nasional Pantura, tangki diisi penuh kembali di SPBU setempat. <strong>Ganti posisi kembali ke Supir 1.</strong></p>
                     </div>
                 </div>
 
@@ -617,25 +614,19 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><span class="highlight">10:45 - 12:15 WIB:</span> Melintasi rute kraksaan padat merayap bus antarkota.</p>
+                        <p><span class="highlight">10:45 - 12:15 WIB:</span> Melintasi kawasan Kraksaan yang padat aktivitas angkutan bus oleh Supir 1.</p>
                         
                         <div class="toilet-stop-box">
-                            <strong>🚽 PEMBERHENTIAN TOILET 3 (10 - 20 Menit)</strong>
-                            <span class="highlight">12:15 - 12:35 WIB:</span> Istirahat toilet singkat di SPBU batas kota Probolinggo sebelum gerbang masuk tol.
+                            <strong> SPBU BATAS KOTA PROBOLINGGO</strong>
+                            <span class="highlight">12:15 - 12:35 WIB:</span> Istirahat toilet singkat sebelum tapping masuk pintu tol Trans Jawa.
                         </div>
 
-                        <p><span class="highlight">12:35 - 13:45 WIB:</span> Masuk Gerbang Tol Probolinggo Timur melaju aman ke barat.</p>
-                        <p><span class="highlight">13:45 - 14:45 WIB (Istirahat Panjang - 1 Jam):</span> Makan siang utama di Rest Area KM 726 B. Isi BBM tol hingga <strong>Full Tank</strong>. <strong>Ganti ke Supir 2.</strong></p>
+                        <p><span class="highlight">12:35 - 13:45 WIB:</span> Memasuki Gerbang Tol Probolinggo Timur melaju aman ke barat.</p>
+                        <p><span class="highlight">13:45 - 14:45 WIB (Istirahat Panjang):</span> Makan siang utama di area Rest Area KM 726 B. Tangki bahan bakar diisi penuh di SPBU tol. <strong>Ganti posisi ke Supir 2.</strong></p>
                         
                         <div class="toilet-stop-box">
-                            <strong>🚽 PEMBERHENTIAN TOILET 4 (10 - 20 Menit)</strong>
-                            <span class="highlight">15:45 - 16:00 WIB:</span> Berhenti di Rest Area KM 575 B (Ngawi) agar lansia bisa meregangkan kaki dan ke kamar mandi tol.
-                        </div>
-                        <div class="etape-cost">
-                            <ul>
-                                <li>Makan Siang Keluarga (5 Orang): ± Rp 250.000</li>
-                                <li>Isi BBM Top-up Full Tol: ± Rp 250.000</li>
-                            </ul>
+                            <strong> REST AREA KM 575 B (Ngawi)</strong>
+                            <span class="highlight">15:45 - 16:00 WIB:</span> Berhenti fungsional agar lansia dapat meluruskan kaki sejenak.
                         </div>
                     </div>
                 </div>
@@ -649,15 +640,9 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><span class="highlight">16:00 - 17:30 WIB:</span> Tol lurus konstan Ngawi menuju Solo.</p>
-                        <p><span class="highlight">17:30 - 18:15 WIB (Rehat Sore - 45 Menit):</span> Keluar Tol Colomadu/Kartasura, mampir di SPBU/Minimarket terdekat. Toilet akhir trip dan kopi sore keluarga. <strong>Ganti ke Supir 3.</strong></p>
-                        <p><span class="highlight">18:15 - 20:30 WIB:</span> Jalur Klaten - Prambanan. Tiba kembali di Yogyakarta dengan selamat, rileks, dan utuh.</p>
-                        <div class="etape-cost">
-                            <ul>
-                                <li>Tarif Tol Trans Jawa Arah Barat: Rp 550.000</li>
-                                <li>Kopi Sore & Snack Pulang: ± Rp 200.000</li>
-                            </ul>
-                        </div>
+                        <p><span class="highlight">16:00 - 17:30 WIB:</span> Meluncur konstan jalur bebas hambatan Ngawi menuju Solo oleh Supir 2.</p>
+                        <p><span class="highlight">17:30 - 18:15 WIB (Rehat Sore):</span> Keluar Pintu Tol Colomadu/Kartasura, berhenti di gerai minimarket terdekat untuk toilet akhir serta rehat kopi sore keluarga. <strong>Ganti posisi kembali ke Supir 1.</strong></p>
+                        <p><span class="highlight">18:15 - 20:30 WIB:</span> Menyusuri arteri jalan Klaten - Prambanan. Tiba kembali di Yogyakarta dengan aman dan selamat.</p>
                     </div>
                 </div>
             </div>
@@ -665,16 +650,16 @@
             <div class="total-box">
                 <h3>Estimasi Biaya Jalan (Pulang)</h3>
                 <div class="cost-breakdown">
-                    <div class="cost-item"><span>Gauge BBM (Total Pengisian)</span><span>Rp 450.000</span></div>
-                    <div class="cost-item"><span>Tarif Tol Trans Jawa</span><span>Rp 550.000</span></div>
-                    <div class="cost-item"><span>Tiket Penyeberangan ASDP</span><span>Rp 215.000</span></div>
-                    <div class="cost-item"><span>Anggaran Makan & Jajan Rombongan</span><span>Rp 1.000.000</span></div>
-                    <div class="cost-item"><span>Kas Tunai Darurat (Toilet & Parkir)</span><span>Rp 150.000</span></div>
+                    <div class="cost-item"><span>Estimasi Cadangan BBM Perjalanan Pulang</span><span>Rp 1.000.000</span></div>
+                    <div class="cost-item"><span>Tarif Pengisian Saldo Tol Trans Jawa Barat</span><span>Rp 700.000</span></div>
+                    <div class="cost-item"><span>Tiket Penyeberangan Selat Bali Kapal ASDP</span><span>Rp 250.000</span></div>
+                    <div class="cost-item"><span>Alokasi Anggaran Makan Rombongan Pulang</span><span>Rp 850.000</span></div>
+                    <div class="cost-item"><span>Kas Tunai Dana Darurat Lapangan (Toilet, Parkir)</span><span>Rp 500.000</span></div>
                 </div>
-                <div class="amount-total">Total Pulang: Rp 2.365.000</div>
+                <div class="amount-total">Total Pulang: Rp 3.300.000</div>
                 <div class="split-card">
-                    <span>Patungan (Dibagi 5 Orang Pulang):</span>
-                    <div class="amount-person">Rp 473.000 / Orang</div>
+                    <span>Skema Patungan Bersama (Dibagi 5 Orang Pulang):</span>
+                    <div class="amount-person">Rp 660.000 / Orang</div>
                 </div>
             </div>
         </div>
