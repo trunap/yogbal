@@ -73,6 +73,13 @@
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* Tombol Aksi (Bot & Database) */
+        .action-buttons { display: flex; gap: 1rem; margin-bottom: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .btn-action { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; text-decoration: none; color: white; transition: transform 0.2s, box-shadow 0.2s; flex-grow: 1; justify-content: center; }
+        .btn-action:hover { transform: translateY(-3px); }
+        .btn-telegram { background: linear-gradient(135deg, #0088cc, #00aaff); box-shadow: 0 6px 12px rgba(0, 136, 204, 0.25); }
+        .btn-gsheet { background: linear-gradient(135deg, #0f9d58, #14b868); box-shadow: 0 6px 12px rgba(15, 157, 88, 0.25); }
+
         .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem; }
         
         .profile-card {
@@ -186,6 +193,7 @@
             .tabs { flex-direction: row; gap: 0.5rem; }
             .tab-btn { padding: 0.8rem 0.5rem; font-size: 0.85rem; }
             .profile-grid { grid-template-columns: repeat(2, 1fr); }
+            .action-buttons { flex-direction: column; }
         }
     </style>
 </head>
@@ -205,12 +213,13 @@
 
         <div class="tabs">
             <button class="tab-btn tab-persiapan active" onclick="openTab('persiapan', this)">📝 Persiapan</button>
-            <button class="tab-btn tab-rombongan" onclick="openTab('rombongan', this)">👥 Anggota + Anggaran</button>
+            <button class="tab-btn tab-rombongan" onclick="openTab('rombongan', this)">👥 Anggota</button>
             <button class="tab-btn tab-berangkat" onclick="openTab('berangkat', this)">🚙 Berangkat</button>
             <button class="tab-btn tab-kegiatan" onclick="openTab('kegiatan', this)">🍽️ Kegiatan</button>
             <button class="tab-btn tab-pulang" onclick="openTab('pulang', this)">🏡 Pulang</button>
         </div>
 
+        <!-- TAB PERSIAPAN -->
         <div id="persiapan" class="tab-content active">
             <div class="checklist-card">
                 <h3>🛠️ 1. Cek Fisik Kendaraan Lengkap & Bengkel (H-7 Berangkat)</h3>
@@ -264,7 +273,20 @@
             </div>
         </div>
 
+        <!-- TAB ROMBONGAN & ANGGARAN -->
         <div id="rombongan" class="tab-content">
+            
+            <!-- TOMBOL AKSES KE KEUANGAN -->
+            <div class="action-buttons">
+                <a href="https://t.me/ftyogbal_bot" target="_blank" class="btn-action btn-telegram">
+                    <span>🤖</span> Buka Bot Telegram
+                </a>
+                <!-- GANTI TANDA # DI BAWAH INI DENGAN LINK GOOGLE SHEETS ASLI -->
+                <a href="https://docs.google.com/spreadsheets/d/1cv1es3_1lHxFyXOU9Nkhqy15xpZB3En-iInGgPW4pos/edit?gid=1922137#gid=1922137" target="_blank" class="btn-action btn-gsheet">
+                    <span>📊</span> Buka Google Sheets
+                </a>
+            </div>
+
             <div class="profile-grid">
                 <div class="profile-card card-pria">
                     <span class="profile-emoji">👨🏻</span>
@@ -329,7 +351,7 @@
                     <div class="split-card">
                         <span style="color: #0f172a;">1. Truna, Yonna, Yuliana, Uti (Ikut Penuh PP Darat):</span>
                         <div class="amount-person" style="color: #1e3a8a;">Rp 3.060.000 / Orang</div>
-                        <ul style="color: #475569;">
+                        <ul>
                             <li>Patungan Homestay (5 Malam): Rp 640.000</li>
                             <li>Patungan Transportasi Berangkat: Rp 600.000</li>
                             <li>Patungan Transportasi Pulang: Rp 720.000</li>
@@ -340,7 +362,7 @@
                     <div class="split-card">
                         <span style="color: #0f172a;">2. Ferdinal & Rina (Hanya Pergi Darat):</span>
                         <div class="amount-person" style="color: #1e3a8a;">Rp 2.340.000 / Orang</div>
-                        <ul style="color: #475569;">
+                        <ul>
                             <li>Patungan Homestay (5 Malam): Rp 640.000</li>
                             <li>Patungan Transportasi Berangkat: Rp 600.000</li>
                             <li>Patungan Kas Bali & Konsumsi Penuh: Rp 1.100.000</li>
@@ -350,7 +372,7 @@
                     <div class="split-card">
                         <span style="color: #0f172a;">3. Jones & Yemima Silitonga (Terbang / Ketemu Langsung di Bali):</span>
                         <div class="amount-person" style="color: #1e3a8a;">Rp 1.740.000 / Orang</div>
-                        <ul style="color: #475569;">
+                        <ul>
                             <li>Patungan Homestay (5 Malam): Rp 640.000</li>
                             <li>Patungan Kas Bali & Konsumsi Penuh: Rp 1.100.000</li>
                         </ul>
@@ -359,7 +381,7 @@
                     <div class="split-card">
                         <span style="color: #0f172a;">4. Yuyun (Masuk Sabtu Tengah Liburan & Ikut Pulang Darat):</span>
                         <div class="amount-person" style="color: #1e3a8a;">Rp 2.000.000</div>
-                        <ul style="color: #475569;">
+                        <ul>
                             <li>Patungan Homestay Sesuai Inap (3 Malam): Rp 380.000</li>
                             <li>Patungan Transportasi Pulang: Rp 720.000</li>
                             <li>Patungan Kas Bali Proporsional (Mulai Sabtu): Rp 900.000</li>
@@ -381,6 +403,7 @@
             </div>
         </div>
 
+        <!-- TAB BERANGKAT -->
         <div id="berangkat" class="tab-content">
             <div class="alert-benchmark">
                 <strong>Penumpang Kabin:</strong> Truna, Yonna, Yuliana, Uti, Ferdinal, Rina.
@@ -445,7 +468,7 @@
                         
                         <div class="toilet-stop-box" style="border-color: #059669; background-color: #f0fdf4;">
                             <strong style="color: #047857;"> 🍽️ MAKAN SIANG DI REST AREA UTAMA RAYA</strong>
-                            <span class="highlight">11:45 - 12:45 WIB:</span> Rehat panjang untuk makan siang di <strong>Rest Area Utama Raya (Banyuglugur)</strong>Ini adalah SPBU dan rest area terbesar, terlengkap, dan ternyaman di jalur Pantura (fasilitas toilet VIP, sangat cocok untuk rombongan keluarga), sekaligus pengisian BBM *full tank* (Estimasi BBM: Rp 450.000).
+                            <span class="highlight">11:45 - 12:45 WIB:</span> Rehat panjang untuk makan siang di <strong>Rest Area Utama Raya (Banyuglugur)</strong>. Ini adalah SPBU dan rest area terbesar, terlengkap, dan ternyaman di jalur Pantura (fasilitas toilet VIP, sangat cocok untuk rombongan keluarga), sekaligus pengisian BBM *full tank* (Estimasi BBM: Rp 450.000).
                         </div>
                     </div>
                 </div>
@@ -472,7 +495,8 @@
 
                         <div class="toilet-stop-box" style="border-color: #059669; background-color: #f0fdf4;">
                             <strong style="color: #047857;"> 🍽️ MAKAN MALAM DI KETAPANG (SEBELUM NAIK KAPAL)</strong>
-                            <span class="highlight">17:30 - 18:30 WIB:</span> Berhenti di area kuliner Ketapang / Banyuwangi untuk makan malam di darat.
+                            <span class="highlight">17:30 - 18:30 WIB:</span> Berhenti di area kuliner Ketapang / Banyuwangi untuk makan malam di darat.<br><br>
+                            <a href="https://maps.app.goo.gl/iHHKC1NFrCrrRVLH7" target="_blank" class="maps-btn" style="background-color: #0ea5e9; box-shadow: 0 2px 4px rgba(14, 165, 233, 0.2);">📍 Navigasi Tempat Makan Malam</a>
                         </div>
                     </div>
                 </div>
@@ -515,7 +539,7 @@
                         <p><span class="highlight">01:30 WITA (Kamis Dini Hari):</span> Tiba di lokasi utama <a href="https://www.google.com/maps/search/Garuda+Homestay+Sanur/" target="_blank">Garuda Homestay Sanur, Denpasar Selatan</a>. Apakah mau cari hotel sementara untuk tidur beberapa jam? Karena check-in nya jam 14.00 WITA.</p>
                     </div>
                 </div>
-            </div> <!-- PENUTUP TIMELINE YANG SEMPAT HILANG -->
+            </div> 
 
             <div class="total-box">
                 <h3>Estimasi Biaya Perjalanan Berangkat</h3>
@@ -530,6 +554,7 @@
             </div>
         </div>
 
+        <!-- TAB KEGIATAN -->
         <div id="kegiatan" class="tab-content">
             
             <div class="checklist-card">
@@ -619,6 +644,7 @@
             </div>
         </div>
 
+        <!-- TAB PULANG -->
         <div id="pulang" class="tab-content">
             <div class="alert-benchmark">
                 <strong>Penumpang:</strong> Truna, Yonna, Yuliana, Uti, Yuyun.
@@ -785,6 +811,7 @@
     </div>
 
     <script>
+        // Fungsi untuk Navigasi Tab
         function openTab(tabId, element) {
             let contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
